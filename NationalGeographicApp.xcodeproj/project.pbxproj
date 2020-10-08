@@ -56,15 +56,55 @@
 		8C9A353A252F2CDF00FC4835 /* NationalGeographicApp */ = {
 			isa = PBXGroup;
 			children = (
-				8C9A353B252F2CDF00FC4835 /* AppDelegate.swift */,
-				8C9A353D252F2CDF00FC4835 /* SceneDelegate.swift */,
-				8C9A353F252F2CDF00FC4835 /* ViewController.swift */,
-				8C9A3541252F2CDF00FC4835 /* Main.storyboard */,
-				8C9A3544252F2CE400FC4835 /* Assets.xcassets */,
-				8C9A3546252F2CE400FC4835 /* LaunchScreen.storyboard */,
-				8C9A3549252F2CE400FC4835 /* Info.plist */,
+				8C9A354F252F2D1400FC4835 /* ViewControllers */,
+				8C9A3550252F2D2700FC4835 /* Models */,
+				8C9A3551252F2D3B00FC4835 /* Storyboards */,
+				8C9A3552252F2D4F00FC4835 /* Sourse */,
+				8C9A3553252F2D5E00FC4835 /* SupportingFiles */,
 			);
 			path = NationalGeographicApp;
+			sourceTree = "<group>";
+		};
+		8C9A354F252F2D1400FC4835 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8C9A353F252F2CDF00FC4835 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8C9A3550252F2D2700FC4835 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C9A3551252F2D3B00FC4835 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				8C9A3541252F2CDF00FC4835 /* Main.storyboard */,
+				8C9A3546252F2CE400FC4835 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		8C9A3552252F2D4F00FC4835 /* Sourse */ = {
+			isa = PBXGroup;
+			children = (
+				8C9A3544252F2CE400FC4835 /* Assets.xcassets */,
+			);
+			path = Sourse;
+			sourceTree = "<group>";
+		};
+		8C9A3553252F2D5E00FC4835 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8C9A353B252F2CDF00FC4835 /* AppDelegate.swift */,
+				8C9A353D252F2CDF00FC4835 /* SceneDelegate.swift */,
+				8C9A3549252F2CE400FC4835 /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,7 +326,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G39AAW7HHA;
-				INFOPLIST_FILE = NationalGeographicApp/Info.plist;
+				INFOPLIST_FILE = NationalGeographicApp/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,7 +335,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.first.NationalGeographicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -304,7 +345,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G39AAW7HHA;
-				INFOPLIST_FILE = NationalGeographicApp/Info.plist;
+				INFOPLIST_FILE = NationalGeographicApp/SupportingFiles/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +354,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.first.NationalGeographicApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
