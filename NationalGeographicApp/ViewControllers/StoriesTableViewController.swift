@@ -27,8 +27,10 @@ class StoriesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath)
         
         let storie = stories[indexPath.row]
-        cell.textLabel?.text = storie.title
-        cell.detailTextLabel?.text = storie.description
+//        print(storie.leadMedia?.immersiveLead[indexPath.row].title)
+        cell.textLabel?.text = storie.id
+//        cell.textLabel?.text = storie.leadMedia?.immersiveLead?.title
+//        cell.detailTextLabel?.text = storie.leadMedia?.immersiveLead?.description
 
         return cell
     }
@@ -36,7 +38,8 @@ class StoriesTableViewController: UITableViewController {
     func fetchData() {
         guard let url = URL(string: latestStoriesUrl) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error { print(error); return }
             guard let data = data else { return }
             
             let decoder = JSONDecoder()
@@ -45,7 +48,7 @@ class StoriesTableViewController: UITableViewController {
                 self.stories = try decoder.decode([Storie].self, from: data)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    self.filteringStories()
+//                    self.filteringStories()
                 }
             } catch let error {
                 print(error.localizedDescription)
@@ -53,25 +56,24 @@ class StoriesTableViewController: UITableViewController {
         }.resume()
     }
     
-    func filteringStories() {
-        var storiesList = [Storie]()
-        
-        for index in 0 ..< stories.count {
-            if stories[index].id != nil {
-                storiesList.append(
-                    Storie (
-                        id: stories[index].id,
-                        uri: stories[index].uri,
-                        sponsorContent: stories[index].sponsorContent,
-                        sponsorContentLabel: stories[index].sponsorContentLabel,
-                        title: stories[index].title,
-                        description: stories[index].description
-                    )
-                )
-            }
-        }
-        self.stories = storiesList
-    }
+//    func filteringStories() {
+//        var storiesList = [Storie]()
+//        var leadMediaList = [LeadMedia]()
+//        var immersiveLeadList = [ImmersiveLead]()
+//
+//        for index in 0 ..< stories.count {
+//            if !stories[index].id.isEmpty {
+//                storiesList.append(
+//                    Storie (
+//                        id: stories[index].id,
+//                        leadMedia: stories[index].leadMedia
+//                    )
+//                )
+//
+//            }
+//        }
+//        self.stories = storiesList
+//    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

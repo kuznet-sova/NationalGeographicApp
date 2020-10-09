@@ -7,10 +7,14 @@
 //
 
 struct Storie: Decodable {
-    let id: String?
-    let uri: String?
-    let sponsorContent: Bool
-    let sponsorContentLabel: String?
+    let id: String
+    let leadMedia: LeadMedia?
+}
+
+struct LeadMedia: Decodable {
+    let immersiveLead: [ImmersiveLead]
+}
+
+struct ImmersiveLead: Decodable {
     let title: String?
-    let description: String?
 }
