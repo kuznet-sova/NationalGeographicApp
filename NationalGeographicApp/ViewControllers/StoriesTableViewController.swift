@@ -27,7 +27,7 @@ class StoriesTableViewController: UITableViewController {
         let storie = stories[indexPath.row]
         let sponsor = storie.sponsorContent
 
-        if sponsor == true {
+        if sponsor {
             cell.textLabel?.text = storie.components?.first?.title?.text ?? "📰"
             cell.detailTextLabel?.text = storie.components?[1].dek?.text ?? ""
         } else {
