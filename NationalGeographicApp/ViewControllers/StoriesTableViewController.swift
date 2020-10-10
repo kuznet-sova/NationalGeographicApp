@@ -27,10 +27,9 @@ class StoriesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath)
         
         let storie = stories[indexPath.row]
-//        print(storie.leadMedia?.immersiveLead[indexPath.row].title)
-        cell.textLabel?.text = storie.id
-//        cell.textLabel?.text = storie.leadMedia?.immersiveLead?.title
-//        cell.detailTextLabel?.text = storie.leadMedia?.immersiveLead?.description
+        
+        print(stories)
+        cell.textLabel?.text = storie.leadMedia?.contentType
 
         return cell
     }
@@ -48,7 +47,7 @@ class StoriesTableViewController: UITableViewController {
                 self.stories = try decoder.decode([Storie].self, from: data)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-//                    self.filteringStories()
+                    self.filteringStories()
                 }
             } catch let error {
                 print(error.localizedDescription)
@@ -56,24 +55,21 @@ class StoriesTableViewController: UITableViewController {
         }.resume()
     }
     
-//    func filteringStories() {
-//        var storiesList = [Storie]()
-//        var leadMediaList = [LeadMedia]()
-//        var immersiveLeadList = [ImmersiveLead]()
-//
-//        for index in 0 ..< stories.count {
-//            if !stories[index].id.isEmpty {
-//                storiesList.append(
-//                    Storie (
-//                        id: stories[index].id,
-//                        leadMedia: stories[index].leadMedia
-//                    )
-//                )
-//
-//            }
-//        }
-//        self.stories = storiesList
-//    }
+    func filteringStories() {
+        var storiesList = [Storie]()
+
+        for index in 0 ..< stories.count {
+            if !stories[index].id.isEmpty {
+                storiesList.append(
+                    Storie (
+                        id: stories[index].id,
+                        leadMedia: stories[index].leadMedia
+                    )
+                )
+            }
+        }
+        self.stories = storiesList
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

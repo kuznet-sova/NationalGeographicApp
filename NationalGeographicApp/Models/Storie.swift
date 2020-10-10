@@ -12,7 +12,8 @@ struct Storie: Decodable {
 }
 
 struct LeadMedia: Decodable {
-    let immersiveLead: [ImmersiveLead]
+    let contentType: String?
+    let immersiveLead: ImmersiveLead?
 }
 
 struct ImmersiveLead: Decodable {
