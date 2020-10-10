@@ -9,6 +9,7 @@
 struct Storie: Decodable {
     let id: String
     let leadMedia: LeadMedia?
+    let components: [Component]?
 }
 
 struct LeadMedia: Decodable {
@@ -18,4 +19,12 @@ struct LeadMedia: Decodable {
 
 struct ImmersiveLead: Decodable {
     let title: String?
+}
+
+struct Component: Decodable {
+    let title: Title?
+}
+
+struct Title: Decodable {
+    let text: String?
 }

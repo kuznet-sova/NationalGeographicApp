@@ -28,8 +28,8 @@ class StoriesTableViewController: UITableViewController {
         
         let storie = stories[indexPath.row]
         
-        print(stories)
-        cell.textLabel?.text = storie.leadMedia?.contentType
+//        print(storie.components?.first?.title?.text! ?? "error")
+        cell.textLabel?.text = storie.components?.first?.title?.text ?? "📰"
 
         return cell
     }
@@ -63,7 +63,8 @@ class StoriesTableViewController: UITableViewController {
                 storiesList.append(
                     Storie (
                         id: stories[index].id,
-                        leadMedia: stories[index].leadMedia
+                        leadMedia: stories[index].leadMedia,
+                        components: stories[index].components
                     )
                 )
             }
