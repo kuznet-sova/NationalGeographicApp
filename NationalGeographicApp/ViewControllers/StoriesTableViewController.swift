@@ -15,7 +15,7 @@ class StoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.rowHeight = 90
+//        tableView.rowHeight = 90
         fetchData()
     }
 
