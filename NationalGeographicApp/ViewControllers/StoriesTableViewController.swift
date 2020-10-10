@@ -28,8 +28,9 @@ class StoriesTableViewController: UITableViewController {
         
         let storie = stories[indexPath.row]
         
-//        print(storie.components?.first?.title?.text! ?? "error")
+        print(storie.components?[1].dek?.text ?? "error")
         cell.textLabel?.text = storie.components?.first?.title?.text ?? "📰"
+        cell.detailTextLabel?.text = storie.components?[1].dek?.text ?? ""
 
         return cell
     }
@@ -63,7 +64,6 @@ class StoriesTableViewController: UITableViewController {
                 storiesList.append(
                     Storie (
                         id: stories[index].id,
-                        leadMedia: stories[index].leadMedia,
                         components: stories[index].components
                     )
                 )

@@ -8,23 +8,23 @@
 
 struct Storie: Decodable {
     let id: String
-    let leadMedia: LeadMedia?
     let components: [Component]?
-}
-
-struct LeadMedia: Decodable {
-    let contentType: String?
-    let immersiveLead: ImmersiveLead?
-}
-
-struct ImmersiveLead: Decodable {
-    let title: String?
 }
 
 struct Component: Decodable {
     let title: Title?
+    let dek: Dek?
+    let kicker: Kicker?
 }
 
 struct Title: Decodable {
     let text: String?
+}
+
+struct Dek: Decodable {
+    let text: String?
+}
+
+struct Kicker: Decodable {
+    let name: String?
 }
