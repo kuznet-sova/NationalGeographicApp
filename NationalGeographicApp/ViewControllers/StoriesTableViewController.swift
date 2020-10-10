@@ -14,8 +14,6 @@ class StoriesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        tableView.rowHeight = 90
         fetchData()
     }
 
@@ -27,19 +25,16 @@ class StoriesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath)
         
         let storie = stories[indexPath.row]
-//        let sponsor = storie.sponsorContent
-//
-//        if sponsor == true {
-//            cell.textLabel?.text = storie.components?.first?.title?.text ?? "📰"
-//            cell.detailTextLabel?.text = storie.components?[1].dek?.text ?? ""
-//        } else {
-//            cell.textLabel?.text = storie.components?.last?.kicker?.vertical?.name ?? ""
-//            cell.detailTextLabel?.text = storie.components?.first?.title?.text ?? "📰"
-//        }
+        let sponsor = storie.sponsorContent
+
+        if sponsor == true {
+            cell.textLabel?.text = storie.components?.first?.title?.text ?? "📰"
+            cell.detailTextLabel?.text = storie.components?[1].dek?.text ?? ""
+        } else {
+            cell.textLabel?.text = storie.components?.last?.kicker?.vertical?.name ?? ""
+            cell.detailTextLabel?.text = storie.components?.first?.title?.text ?? "📰"
+        }
         
-//        print(stories)
-        cell.textLabel?.text = storie.components?.last?.kicker?.vertical?.name ?? ""
-        cell.detailTextLabel?.text = storie.components?.first?.title?.text ?? "📰"
 //        cell.imageView?.image = UIImage(systemName: "")
 
         return cell
@@ -58,30 +53,11 @@ class StoriesTableViewController: UITableViewController {
                 self.stories = try decoder.decode([Storie].self, from: data)
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    self.filteringStories()
                 }
             } catch let error {
                 print(error.localizedDescription)
             }
         }.resume()
     }
-    
-    func filteringStories() {
-        var storiesList = [Storie]()
 
-        for index in 0 ..< stories.count {
-            if !stories[index].id.isEmpty {
-                storiesList.append(
-                    Storie (
-                        id: stories[index].id,
-                        uri: stories[index].uri,
-                        sponsorContentLabel: stories[index].sponsorContentLabel,
-                        components: stories[index].components
-                    )
-                )
-            }
-        }
-        self.stories = storiesList
-    }
-    
 }
