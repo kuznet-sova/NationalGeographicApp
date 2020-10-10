@@ -27,10 +27,20 @@ class StoriesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath)
         
         let storie = stories[indexPath.row]
+//        let sponsor = storie.sponsorContent
+//
+//        if sponsor == true {
+//            cell.textLabel?.text = storie.components?.first?.title?.text ?? "📰"
+//            cell.detailTextLabel?.text = storie.components?[1].dek?.text ?? ""
+//        } else {
+//            cell.textLabel?.text = storie.components?.last?.kicker?.vertical?.name ?? ""
+//            cell.detailTextLabel?.text = storie.components?.first?.title?.text ?? "📰"
+//        }
         
-        print(storie.components?[1].dek?.text ?? "error")
-        cell.textLabel?.text = storie.components?.first?.title?.text ?? "📰"
-        cell.detailTextLabel?.text = storie.components?[1].dek?.text ?? ""
+//        print(stories)
+        cell.textLabel?.text = storie.components?.last?.kicker?.vertical?.name ?? ""
+        cell.detailTextLabel?.text = storie.components?.first?.title?.text ?? "📰"
+//        cell.imageView?.image = UIImage(systemName: "")
 
         return cell
     }
@@ -64,6 +74,8 @@ class StoriesTableViewController: UITableViewController {
                 storiesList.append(
                     Storie (
                         id: stories[index].id,
+                        uri: stories[index].uri,
+                        sponsorContentLabel: stories[index].sponsorContentLabel,
                         components: stories[index].components
                     )
                 )
@@ -71,60 +83,5 @@ class StoriesTableViewController: UITableViewController {
         }
         self.stories = storiesList
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

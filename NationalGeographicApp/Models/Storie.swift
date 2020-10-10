@@ -8,6 +8,8 @@
 
 struct Storie: Decodable {
     let id: String
+    let uri: String?
+    let sponsorContentLabel: String?
     let components: [Component]?
 }
 
@@ -26,5 +28,10 @@ struct Dek: Decodable {
 }
 
 struct Kicker: Decodable {
+    let vertical: Vertical?
+}
+
+struct Vertical: Decodable {
     let name: String?
+    let uri: String?
 }
