@@ -10,22 +10,23 @@ struct Storie: Decodable {
     let id: String
     let uri: String?
     let sponsorContent: Bool
+    let leadMedia: LeadMedia?
     let components: [Component]?
     
     enum CodingKeys: String, CodingKey {
         case id, uri
         case sponsorContent = "sponsor_content"
-//        case leadMedia = "lead_media"
+        case leadMedia = "lead_media"
         case components
     }
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(String.self, forKey: .id)
-        uri = try values.decode(String.self, forKey: .uri)
-        sponsorContent = try values.decode(Bool.self, forKey: .sponsorContent)
-        components = try values.decode(Array.self, forKey: .components)
-    }
+}
+
+struct LeadMedia: Decodable {
+    let image: Image?
+}
+
+struct Image: Decodable {
+    let uri: String?
 }
 
 struct Component: Decodable {
