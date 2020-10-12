@@ -10,6 +10,7 @@ import UIKit
 
 class StoriesTableViewController: UITableViewController {
     private let latestStoriesUrl = "https://www.nationalgeographic.com/latest-stories/_jcr_content/content/hubfeed.promo-hub-feed-all-stories.json?offset=0&max=18"
+    private let logoNG = "https://sire-specials.fichub.com/specials/howtoget/natgeo/ru/images/natgeo.svg"
     var stories: [Storie] = []
 
     override func viewDidLoad() {
@@ -27,7 +28,7 @@ class StoriesTableViewController: UITableViewController {
         
         let storie = stories[indexPath.row]
         let sponsor = storie.sponsorContent
-//        let imageUrl = storie.leadMedia?.image?.uri
+        let imageUrl = storie.leadMedia?.image?.uri
 
         if sponsor {
             cell.titleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
@@ -37,19 +38,19 @@ class StoriesTableViewController: UITableViewController {
             cell.subtitleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
         }
         
-//        func getStorieImage() {
-//            guard let imageUrl = URL(string: imageUrl ?? "globe") else { return }
-//
-//            URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-//                if let data = data, let image = UIImage(data: data) {
-//                    DispatchQueue.main.async {
-//                        cell.imageView?.image = image
-//                    }
-//                }
-//            }.resume()
-//        }
+        func getStorieImage() {
+            guard let imageUrl = URL(string: imageUrl ?? logoNG) else { return }
+
+            URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        cell.storieImageView.image = image
+                    }
+                }
+            }.resume()
+        }
         
-//        getStorieImage()
+        getStorieImage()
 
         return cell
     }
