@@ -15,6 +15,7 @@
 		8C9A3548252F2CE400FC4835 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C9A3546252F2CE400FC4835 /* LaunchScreen.storyboard */; };
 		8C9A35562530E16F00FC4835 /* StoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A35552530E16F00FC4835 /* StoriesTableViewController.swift */; };
 		8C9A35582530E2E900FC4835 /* Storie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A35572530E2E900FC4835 /* Storie.swift */; };
+		8CC745512534CCAE00CC7083 /* StorieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC745502534CCAE00CC7083 /* StorieTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8C9A3549252F2CE400FC4835 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C9A35552530E16F00FC4835 /* StoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewController.swift; sourceTree = "<group>"; };
 		8C9A35572530E2E900FC4835 /* Storie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storie.swift; sourceTree = "<group>"; };
+		8CC745502534CCAE00CC7083 /* StorieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorieTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				8C9A3551252F2D3B00FC4835 /* Storyboards */,
 				8C9A3552252F2D4F00FC4835 /* Sourse */,
 				8C9A3553252F2D5E00FC4835 /* SupportingFiles */,
+				8CC745502534CCAE00CC7083 /* StorieTableViewCell.swift */,
 			);
 			path = NationalGeographicApp;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				8C9A35562530E16F00FC4835 /* StoriesTableViewController.swift in Sources */,
 				8C9A353E252F2CDF00FC4835 /* SceneDelegate.swift in Sources */,
 				8C9A35582530E2E900FC4835 /* Storie.swift in Sources */,
+				8CC745512534CCAE00CC7083 /* StorieTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
