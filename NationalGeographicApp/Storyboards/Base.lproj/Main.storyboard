@@ -61,18 +61,18 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kDu-rr-xzI">
                                                     <rect key="frame" x="0.0" y="0.0" width="167.5" height="124"/>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E10-NX-0IT">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="E10-NX-0IT">
                                                     <rect key="frame" x="175.5" y="0.0" width="167.5" height="124"/>
                                                     <subviews>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="el1-g0-Ibf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="167.5" height="59.5"/>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="el1-g0-Ibf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="39.5" height="59.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Eh-TT-eLY">
-                                                            <rect key="frame" x="0.0" y="67.5" width="167.5" height="56.5"/>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3Eh-TT-eLY">
+                                                            <rect key="frame" x="0.0" y="67.5" width="50" height="56.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
@@ -84,10 +84,8 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="osf-4d-Xps" firstAttribute="centerX" secondItem="GCI-DQ-cEg" secondAttribute="centerX" id="7jo-60-pF5"/>
                                         <constraint firstAttribute="bottom" secondItem="osf-4d-Xps" secondAttribute="bottom" constant="8" id="9B2-Mi-JiV"/>
                                         <constraint firstAttribute="trailing" secondItem="osf-4d-Xps" secondAttribute="trailing" constant="16" id="9hj-LT-QLd"/>
-                                        <constraint firstItem="osf-4d-Xps" firstAttribute="centerY" secondItem="GCI-DQ-cEg" secondAttribute="centerY" id="E6h-x5-ygR"/>
                                         <constraint firstItem="osf-4d-Xps" firstAttribute="top" secondItem="GCI-DQ-cEg" secondAttribute="top" constant="8" id="b5j-Kv-NWn"/>
                                         <constraint firstItem="osf-4d-Xps" firstAttribute="leading" secondItem="GCI-DQ-cEg" secondAttribute="leading" constant="16" id="xdy-Cd-OyW"/>
                                     </constraints>
