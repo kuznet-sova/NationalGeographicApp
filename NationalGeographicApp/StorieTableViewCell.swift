@@ -16,7 +16,7 @@ class StorieTableViewCell: UITableViewCell {
         didSet {
             storieImageView.contentMode = .scaleAspectFit
             storieImageView.clipsToBounds = true
-            storieImageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+//            storieImageView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         }
     }
 
