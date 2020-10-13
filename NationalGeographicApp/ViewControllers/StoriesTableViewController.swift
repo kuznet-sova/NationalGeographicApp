@@ -10,7 +10,6 @@ import UIKit
 
 class StoriesTableViewController: UITableViewController {
     private let latestStoriesUrl = "https://www.nationalgeographic.com/latest-stories/_jcr_content/content/hubfeed.promo-hub-feed-all-stories.json?offset=0&max=18"
-    private let logoNG = "https://sire-specials.fichub.com/specials/howtoget/natgeo/ru/images/natgeo.svg"
     var stories: [Storie] = []
 
     override func viewDidLoad() {
