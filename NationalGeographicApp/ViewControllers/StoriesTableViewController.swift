@@ -15,7 +15,7 @@ class StoriesTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.rowHeight = 100
+        tableView.rowHeight = 100
         fetchData()
     }
 
@@ -28,7 +28,6 @@ class StoriesTableViewController: UITableViewController {
         
         let storie = stories[indexPath.row]
         let sponsor = storie.sponsorContent
-        let imageUrl = storie.leadMedia?.image?.uri
 
         if sponsor {
             cell.titleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
@@ -38,19 +37,7 @@ class StoriesTableViewController: UITableViewController {
             cell.subtitleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
         }
         
-        func getStorieImage() {
-            guard let imageUrl = URL(string: imageUrl ?? logoNG) else { return }
-
-            URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        cell.storieImageView.image = image
-                    }
-                }
-            }.resume()
-        }
-        
-        getStorieImage()
+        cell.getStorieImage(with: storie)
 
         return cell
     }
