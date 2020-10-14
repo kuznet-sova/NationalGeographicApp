@@ -32,6 +32,7 @@ class StorieTableViewCell: UITableViewCell {
             DispatchQueue.main.async {
                 self.spinnerView?.stopAnimating()
                 self.storieImageView.image = UIImage(data: imageData)
+                self.storieImageView.contentMode = UIView.ContentMode.scaleAspectFill
             }
         }
     }
