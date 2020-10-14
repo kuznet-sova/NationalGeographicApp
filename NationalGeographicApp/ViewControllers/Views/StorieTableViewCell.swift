@@ -49,4 +49,9 @@ class StorieTableViewCell: UITableViewCell {
         return activityIndicator
     }
     
+    override func prepareForReuse() {
+        storieImageView.image = nil
+        self.spinnerView?.startAnimating()
+    }
+    
 }
