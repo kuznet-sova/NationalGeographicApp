@@ -16,6 +16,7 @@
 		8C9A35562530E16F00FC4835 /* StoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A35552530E16F00FC4835 /* StoriesTableViewController.swift */; };
 		8C9A35582530E2E900FC4835 /* Storie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A35572530E2E900FC4835 /* Storie.swift */; };
 		8CC745512534CCAE00CC7083 /* StorieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC745502534CCAE00CC7083 /* StorieTableViewCell.swift */; };
+		8CDF8316253774CA00CD8E2D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDF8315253774CA00CD8E2D /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		8C9A35552530E16F00FC4835 /* StoriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesTableViewController.swift; sourceTree = "<group>"; };
 		8C9A35572530E2E900FC4835 /* Storie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storie.swift; sourceTree = "<group>"; };
 		8CC745502534CCAE00CC7083 /* StorieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorieTableViewCell.swift; sourceTree = "<group>"; };
+		8CDF8315253774CA00CD8E2D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				8C9A353B252F2CDF00FC4835 /* AppDelegate.swift */,
 				8C9A353D252F2CDF00FC4835 /* SceneDelegate.swift */,
+				8CDF8315253774CA00CD8E2D /* NetworkManager.swift */,
 				8C9A3549252F2CE400FC4835 /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -198,6 +201,7 @@
 				8C9A3540252F2CDF00FC4835 /* StartViewController.swift in Sources */,
 				8C9A353C252F2CDF00FC4835 /* AppDelegate.swift in Sources */,
 				8C9A35562530E16F00FC4835 /* StoriesTableViewController.swift in Sources */,
+				8CDF8316253774CA00CD8E2D /* NetworkManager.swift in Sources */,
 				8C9A353E252F2CDF00FC4835 /* SceneDelegate.swift in Sources */,
 				8C9A35582530E2E900FC4835 /* Storie.swift in Sources */,
 				8CC745512534CCAE00CC7083 /* StorieTableViewCell.swift in Sources */,

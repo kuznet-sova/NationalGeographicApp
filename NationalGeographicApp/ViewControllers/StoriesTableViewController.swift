@@ -15,7 +15,13 @@ class StoriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 150
-        fetchData()
+        
+        NetworkManager.shared.fetchData(from: latestStoriesUrl) { stories in
+            DispatchQueue.main.async {
+                self.stories = stories
+                self.tableView.reloadData()
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,24 +47,4 @@ class StoriesTableViewController: UITableViewController {
         return cell
     }
     
-    func fetchData() {
-        guard let url = URL(string: latestStoriesUrl) else { return }
-        
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
-            if let error = error { print(error); return }
-            guard let data = data else { return }
-            
-            let decoder = JSONDecoder()
-
-            do {
-                self.stories = try decoder.decode([Storie].self, from: data)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }.resume()
-    }
-
 }
