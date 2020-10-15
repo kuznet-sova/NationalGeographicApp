@@ -23,16 +23,23 @@ class StorieTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         storieImageView.image = nil
-        self.spinnerView?.startAnimating()
+        self.spinnerView?.stopAnimating()
     }
     
     func getStorieImage(with storie: Storie?) {
         let imageUrl = storie?.leadMedia?.image?.uri
         
+        spinnerView?.startAnimating()
+        
         DispatchQueue.global().async {
-            guard let stringUrl = imageUrl else { return }
-            guard let imageUrl = URL(string: stringUrl) else { return }
-            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+            guard let stringUrl = imageUrl,
+                let imageUrl = URL(string: stringUrl),
+                let imageData = try? Data(contentsOf: imageUrl) else {
+                    DispatchQueue.main.async {
+                        self.spinnerView?.stopAnimating()
+                    }
+                    return
+            }
             DispatchQueue.main.async {
                 self.spinnerView?.stopAnimating()
                 self.storieImageView.image = UIImage(data: imageData)
@@ -44,7 +51,6 @@ class StorieTableViewCell: UITableViewCell {
     private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.color = .gray
-        activityIndicator.startAnimating()
         activityIndicator.center = storieImageView.center
         activityIndicator.hidesWhenStopped = true
         

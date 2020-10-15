@@ -9,12 +9,14 @@
 struct Storie: Decodable {
     let id: String
     let uri: String?
+    let buttonLabel: String?
     let sponsorContent: Bool
     let leadMedia: LeadMedia?
     let components: [Component]?
     
     enum CodingKeys: String, CodingKey {
         case id, uri
+        case buttonLabel = "button_label"
         case sponsorContent = "sponsor_content"
         case leadMedia = "lead_media"
         case components
