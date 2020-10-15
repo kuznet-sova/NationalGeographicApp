@@ -52,6 +52,7 @@ class StoriesTableViewController: UITableViewController {
         let storie = stories[indexPath.row]
         let fullStorieViewController = segue.destination as! FullStorieViewController
         fullStorieViewController.storieUrl = storie.uri
+        fullStorieViewController.storieCategory = storie.components?.last?.kicker?.vertical?.name
     }
     
 }

@@ -13,10 +13,12 @@ class FullStorieViewController: UIViewController {
     @IBOutlet var fullStorieWebView: WKWebView!
     
     var storieUrl: String!
+    var storieCategory: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fullStorieWebView.backgroundColor = .white
+        navigationItem.title = storieCategory
         
         getFullStorie()
     }
