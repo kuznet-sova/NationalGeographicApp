@@ -20,7 +20,11 @@ class StorieTableViewCell: UITableViewCell {
         super.awakeFromNib()
         spinnerView = showSpinner(in: storieImageView)
     }
-
+    
+    override func prepareForReuse() {
+        storieImageView.image = nil
+        self.spinnerView?.startAnimating()
+    }
     
     func getStorieImage(with storie: Storie?) {
         let imageUrl = storie?.leadMedia?.image?.uri
@@ -47,11 +51,6 @@ class StorieTableViewCell: UITableViewCell {
         view.addSubview(activityIndicator)
         
         return activityIndicator
-    }
-    
-    override func prepareForReuse() {
-        storieImageView.image = nil
-        self.spinnerView?.startAnimating()
     }
     
 }

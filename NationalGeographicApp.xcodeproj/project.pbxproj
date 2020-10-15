@@ -17,6 +17,8 @@
 		8C9A35582530E2E900FC4835 /* Storie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A35572530E2E900FC4835 /* Storie.swift */; };
 		8CC745512534CCAE00CC7083 /* StorieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC745502534CCAE00CC7083 /* StorieTableViewCell.swift */; };
 		8CDF8316253774CA00CD8E2D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDF8315253774CA00CD8E2D /* NetworkManager.swift */; };
+		8CDF831825389DCC00CD8E2D /* FullStorieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDF831725389DCC00CD8E2D /* FullStorieViewController.swift */; };
+		8CDF831B2538CBC600CD8E2D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CDF831A2538CBC600CD8E2D /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		8C9A35572530E2E900FC4835 /* Storie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storie.swift; sourceTree = "<group>"; };
 		8CC745502534CCAE00CC7083 /* StorieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorieTableViewCell.swift; sourceTree = "<group>"; };
 		8CDF8315253774CA00CD8E2D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		8CDF831725389DCC00CD8E2D /* FullStorieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullStorieViewController.swift; sourceTree = "<group>"; };
+		8CDF831A2538CBC600CD8E2D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CDF831B2538CBC600CD8E2D /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +63,7 @@
 			children = (
 				8C9A353A252F2CDF00FC4835 /* NationalGeographicApp */,
 				8C9A3539252F2CDF00FC4835 /* Products */,
+				8CDF83192538CBC600CD8E2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +92,7 @@
 			children = (
 				8C9A353F252F2CDF00FC4835 /* StartViewController.swift */,
 				8C9A35552530E16F00FC4835 /* StoriesTableViewController.swift */,
+				8CDF831725389DCC00CD8E2D /* FullStorieViewController.swift */,
 				8C46C20625363F9900F32D34 /* Views */,
 			);
 			path = ViewControllers;
@@ -125,6 +132,14 @@
 				8C9A3549252F2CE400FC4835 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		8CDF83192538CBC600CD8E2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8CDF831A2538CBC600CD8E2D /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C9A3540252F2CDF00FC4835 /* StartViewController.swift in Sources */,
+				8CDF831825389DCC00CD8E2D /* FullStorieViewController.swift in Sources */,
 				8C9A353C252F2CDF00FC4835 /* AppDelegate.swift in Sources */,
 				8C9A35562530E16F00FC4835 /* StoriesTableViewController.swift in Sources */,
 				8CDF8316253774CA00CD8E2D /* NetworkManager.swift in Sources */,

@@ -47,4 +47,11 @@ class StoriesTableViewController: UITableViewController {
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+        let storie = stories[indexPath.row]
+        let fullStorieViewController = segue.destination as! FullStorieViewController
+        fullStorieViewController.storieUrl = storie.uri
+    }
+    
 }

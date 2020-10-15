@@ -94,6 +94,7 @@
                                     <outlet property="storieImageView" destination="kDu-rr-xzI" id="8sO-0g-3Kd"/>
                                     <outlet property="subtitleTextLabel" destination="3Eh-TT-eLY" id="uYk-ha-DSs"/>
                                     <outlet property="titleTextLabel" destination="el1-g0-Ibf" id="LhH-1F-b0s"/>
+                                    <segue destination="G8X-u2-u69" kind="show" id="9KI-Nc-9zD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -102,11 +103,48 @@
                             <outlet property="delegate" destination="xXa-8J-2yS" id="I8k-kZ-Y5w"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Latest stories" largeTitleDisplayMode="never" id="rb3-S9-y9s"/>
+                    <navigationItem key="navigationItem" title="Latest stories" largeTitleDisplayMode="never" id="rb3-S9-y9s">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="XHc-oD-KlS"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpp-fM-82b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1744.8" y="107.49625187406298"/>
+        </scene>
+        <!--Full Storie View Controller-->
+        <scene sceneID="bhm-5g-duh">
+            <objects>
+                <viewController id="G8X-u2-u69" customClass="FullStorieViewController" customModule="NationalGeographicApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jic-Ne-9KD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZWe-S2-BV5">
+                                <rect key="frame" x="16" y="60" width="343" height="587"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ZWe-S2-BV5" firstAttribute="leading" secondItem="IQk-VJ-L3g" secondAttribute="leading" constant="16" id="JCl-A7-9Sv"/>
+                            <constraint firstItem="IQk-VJ-L3g" firstAttribute="trailing" secondItem="ZWe-S2-BV5" secondAttribute="trailing" constant="16" id="Qcu-1l-HI9"/>
+                            <constraint firstItem="ZWe-S2-BV5" firstAttribute="top" secondItem="IQk-VJ-L3g" secondAttribute="top" constant="16" id="k4h-ci-S8L"/>
+                            <constraint firstItem="IQk-VJ-L3g" firstAttribute="bottom" secondItem="ZWe-S2-BV5" secondAttribute="bottom" constant="20" id="sus-W5-dUq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IQk-VJ-L3g"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Bgb-b8-5Wj"/>
+                    <connections>
+                        <outlet property="fullStorieWebView" destination="ZWe-S2-BV5" id="BM3-Jn-zjz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="36I-bM-ldQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2544.8000000000002" y="108.39580209895054"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="v1w-cs-nuv">
