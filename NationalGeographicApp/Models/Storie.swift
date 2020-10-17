@@ -25,6 +25,11 @@ struct Storie: Decodable {
 
 struct LeadMedia: Decodable {
     let image: Image?
+    let video: Video?
+}
+
+struct Video: Decodable {
+    let image: Image?
 }
 
 struct Image: Decodable {

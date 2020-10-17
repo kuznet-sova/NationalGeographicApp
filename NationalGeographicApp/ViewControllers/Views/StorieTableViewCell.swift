@@ -26,8 +26,8 @@ class StorieTableViewCell: UITableViewCell {
         self.spinnerView?.stopAnimating()
     }
     
-    func getStorieImage(with storie: Storie?) {
-        let imageUrl = storie?.leadMedia?.image?.uri
+    func getStorieImage(with uri: String?) {
+        let imageUrl = uri
         
         spinnerView?.startAnimating()
         

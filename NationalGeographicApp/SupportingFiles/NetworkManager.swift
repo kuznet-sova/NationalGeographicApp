@@ -28,7 +28,8 @@ class NetworkManager {
                 for index in 0 ..< storiesList.count {
                     
                     if storiesList[index].buttonLabel.contains("Read")
-                        && storiesList[index].leadMedia?.image?.uri != nil {
+                        && storiesList[index].leadMedia?.image?.uri != nil
+                        || storiesList[index].sponsorContent {
                         stories.append(
                             Storie(id: storiesList[index].id,
                                    uri: storiesList[index].uri,

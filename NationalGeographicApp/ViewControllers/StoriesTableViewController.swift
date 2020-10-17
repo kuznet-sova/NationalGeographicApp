@@ -35,14 +35,18 @@ class StoriesTableViewController: UITableViewController {
         let sponsor = storie.sponsorContent
 
         if sponsor {
+            let sponsorImageUrl = storie.leadMedia?.video?.image?.uri
+            
+            cell.getStorieImage(with: sponsorImageUrl)
             cell.titleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
             cell.subtitleTextLabel.text = storie.components?[1].dek?.text ?? ""
         } else {
+            let standardImageUrl = storie.leadMedia?.image?.uri
+            
+            cell.getStorieImage(with: standardImageUrl)
             cell.titleTextLabel.text = storie.components?.last?.kicker?.vertical?.name ?? ""
             cell.subtitleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
         }
-        
-        cell.getStorieImage(with: storie)
 
         return cell
     }
