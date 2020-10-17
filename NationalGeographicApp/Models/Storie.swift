@@ -9,7 +9,7 @@
 struct Storie: Decodable {
     let id: String
     let uri: String?
-    let buttonLabel: String?
+    let buttonLabel: String
     let sponsorContent: Bool
     let leadMedia: LeadMedia?
     let components: [Component]?

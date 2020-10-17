@@ -12,8 +12,6 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
-    private init() {}
-    
     func fetchData(from latestStoriesUrl: String, with complition: @escaping ([Storie]) -> Void) {
         guard let url = URL(string: latestStoriesUrl) else { return }
         
@@ -24,7 +22,24 @@ class NetworkManager {
             let decoder = JSONDecoder()
 
             do {
-                let stories = try decoder.decode([Storie].self, from: data)
+                let storiesList = try decoder.decode([Storie].self, from: data)
+                var stories = [Storie]()
+                
+                for index in 0 ..< storiesList.count {
+                    
+                    if storiesList[index].buttonLabel.contains("Read")
+                        && storiesList[index].leadMedia?.image?.uri != nil {
+                        stories.append(
+                            Storie(id: storiesList[index].id,
+                                   uri: storiesList[index].uri,
+                                   buttonLabel: storiesList[index].buttonLabel,
+                                   sponsorContent: storiesList[index].sponsorContent,
+                                   leadMedia: storiesList[index].leadMedia,
+                                   components: storiesList[index].components)
+                        )
+                    }
+                }
+                
                 complition(stories)
             } catch let error {
                 print(error.localizedDescription)
