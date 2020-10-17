@@ -17,7 +17,8 @@ class FullStorieViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fullStorieWebView.backgroundColor = .white
+        fullStorieWebView.backgroundColor = .none
+        fullStorieWebView.contentMode = WKWebView.ContentMode.scaleAspectFill
         navigationItem.title = storieCategory
         
         getFullStorie()
