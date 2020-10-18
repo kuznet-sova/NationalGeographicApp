@@ -28,8 +28,6 @@ class StorieTableViewCell: UITableViewCell {
     
     func getStorieImage(with uri: String?, sponsorContent: Bool) {
         let imageUrl = uri
-        let sponsor = sponsorContent
-        var image: UIImage?
         
         spinnerView?.startAnimating()
         
@@ -44,15 +42,8 @@ class StorieTableViewCell: UITableViewCell {
             }
             DispatchQueue.main.async {
                 self.spinnerView?.stopAnimating()
-                image = UIImage(data: imageData)
-                
-                if sponsor {
-                    self.backgroundColor = UIColor(patternImage: image!)
-                } else {
-                    self.storieImageView.image = image
-                    self.storieImageView.contentMode = UIView.ContentMode.scaleAspectFill
-                }
-                
+                self.storieImageView.image = UIImage(data: imageData)
+                self.storieImageView.contentMode = UIView.ContentMode.scaleAspectFill
             }
         }
     }

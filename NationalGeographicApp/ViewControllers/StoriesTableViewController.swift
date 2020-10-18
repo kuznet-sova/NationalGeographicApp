@@ -29,26 +29,28 @@ class StoriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath) as! StorieTableViewCell
-        
         let storie = stories[indexPath.row]
         let sponsor = storie.sponsorContent
 
         if sponsor {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "sponsorCell", for: indexPath) as! SponsorTableViewCell
             let sponsorImageUrl = storie.leadMedia?.video?.image?.uri
             
             cell.getStorieImage(with: sponsorImageUrl, sponsorContent: storie.sponsorContent)
             cell.titleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
             cell.subtitleTextLabel.text = storie.components?[1].dek?.text ?? ""
+            
+            return cell
         } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath) as! StorieTableViewCell
             let standardImageUrl = storie.leadMedia?.image?.uri
             
             cell.getStorieImage(with: standardImageUrl, sponsorContent: storie.sponsorContent)
             cell.titleTextLabel.text = storie.components?.last?.kicker?.vertical?.name ?? ""
             cell.subtitleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
+            
+            return cell
         }
-
-        return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
