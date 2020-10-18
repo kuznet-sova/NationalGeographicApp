@@ -11,6 +11,7 @@ struct Storie: Decodable {
     let uri: String?
     let buttonLabel: String
     let sponsorContent: Bool
+    let sponsorContentLabel: String?
     let leadMedia: LeadMedia?
     let components: [Component]?
     
@@ -18,6 +19,7 @@ struct Storie: Decodable {
         case id, uri
         case buttonLabel = "button_label"
         case sponsorContent = "sponsor_content"
+        case sponsorContentLabel = "sponsor_content_label"
         case leadMedia = "lead_media"
         case components
     }

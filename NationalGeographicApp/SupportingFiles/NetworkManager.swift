@@ -35,6 +35,7 @@ class NetworkManager {
                                    uri: storiesList[index].uri,
                                    buttonLabel: storiesList[index].buttonLabel,
                                    sponsorContent: storiesList[index].sponsorContent,
+                                   sponsorContentLabel: storiesList[index].sponsorContentLabel,
                                    leadMedia: storiesList[index].leadMedia,
                                    components: storiesList[index].components)
                         )

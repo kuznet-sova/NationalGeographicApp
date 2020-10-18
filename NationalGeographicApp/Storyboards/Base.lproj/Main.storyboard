@@ -96,7 +96,7 @@
                                     <outlet property="storieImageView" destination="kDu-rr-xzI" id="8sO-0g-3Kd"/>
                                     <outlet property="subtitleTextLabel" destination="3Eh-TT-eLY" id="uYk-ha-DSs"/>
                                     <outlet property="titleTextLabel" destination="el1-g0-Ibf" id="LhH-1F-b0s"/>
-                                    <segue destination="G8X-u2-u69" kind="show" id="9KI-Nc-9zD"/>
+                                    <segue destination="G8X-u2-u69" kind="show" id="gu5-De-IOY"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sponsorCell" rowHeight="140" id="ZMc-2p-Aun" customClass="SponsorTableViewCell" customModule="NationalGeographicApp" customModuleProvider="target">
@@ -141,6 +141,7 @@
                                 <connections>
                                     <outlet property="subtitleTextLabel" destination="4XZ-uj-UAg" id="OpH-kz-zwH"/>
                                     <outlet property="titleTextLabel" destination="8yq-LS-CTD" id="604-J4-cmd"/>
+                                    <segue destination="G8X-u2-u69" kind="show" id="7Rj-ek-GFD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -211,6 +212,9 @@
             <point key="canvasLocation" x="138.40000000000001" y="109.29535232383809"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="7Rj-ek-GFD"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

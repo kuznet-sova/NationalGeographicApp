@@ -56,9 +56,15 @@ class StoriesTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         let storie = stories[indexPath.row]
+        let sponsor = storie.sponsorContent
         let fullStorieViewController = segue.destination as! FullStorieViewController
+        
         fullStorieViewController.storieUrl = storie.uri
-        fullStorieViewController.storieCategory = storie.components?.last?.kicker?.vertical?.name
+        if sponsor {
+            fullStorieViewController.storieCategory = storie.sponsorContentLabel
+        } else {
+            fullStorieViewController.storieCategory = storie.components?.last?.kicker?.vertical?.name
+        }
     }
     
 }
