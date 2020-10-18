@@ -39,6 +39,8 @@ class StoriesTableViewController: UITableViewController {
             cell.getStorieImage(with: sponsorImageUrl, sponsorContent: storie.sponsorContent)
             cell.titleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
             cell.subtitleTextLabel.text = storie.components?[1].dek?.text ?? ""
+            cell.titleTextLabel.textColor = .white
+            cell.subtitleTextLabel.textColor = .white
             
             return cell
         } else {
