@@ -9,14 +9,15 @@
 import UIKit
 
 class StoriesTableViewController: UITableViewController {
-    private let latestStoriesUrl = "https://www.nationalgeographic.com/latest-stories/_jcr_content/content/hubfeed.promo-hub-feed-all-stories.json?offset=0&max=18"
+    private var offsetValue = 0
+    private var maxValue = 18
     var stories: [Storie] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 150
         
-        NetworkManager.shared.fetchData(from: latestStoriesUrl) { stories in
+        NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue) { stories in
             DispatchQueue.main.async {
                 self.stories = stories
                 self.tableView.reloadData()

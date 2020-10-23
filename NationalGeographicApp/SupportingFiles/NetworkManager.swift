@@ -12,7 +12,9 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
-    func fetchData(from latestStoriesUrl: String, with complition: @escaping ([Storie]) -> Void) {
+    func fetchData(offsetValue: Int, maxValue: Int, with complition: @escaping ([Storie]) -> Void) {
+        let latestStoriesUrl = "https://www.nationalgeographic.com/latest-stories/_jcr_content/content/hubfeed.promo-hub-feed-all-stories.json?offset=\(offsetValue)&max=\(maxValue)"
+        
         guard let url = URL(string: latestStoriesUrl) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, _, error) in
