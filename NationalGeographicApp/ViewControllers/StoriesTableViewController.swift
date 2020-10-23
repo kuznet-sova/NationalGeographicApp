@@ -59,6 +59,20 @@ class StoriesTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == stories.count-1 {
+            offsetValue += maxValue
+            maxValue = 8
+            
+            NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue) { stories in
+                DispatchQueue.main.async {
+                    self.stories.append(contentsOf: stories)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         let storie = stories[indexPath.row]
