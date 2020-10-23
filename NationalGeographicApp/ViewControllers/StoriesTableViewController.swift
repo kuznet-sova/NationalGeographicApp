@@ -9,14 +9,24 @@
 import UIKit
 
 class StoriesTableViewController: UITableViewController {
+    @IBOutlet var storiesTableView: UITableView!
+    
     private var offsetValue = 0
     private var maxValue = 18
     var stories: [Storie] = []
+    
+    let refresh: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        return refreshControl
+    } ()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 150
         
+        storiesTableView.refreshControl = refresh
+
         NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue) { stories in
             DispatchQueue.main.async {
                 self.stories = stories
@@ -65,7 +75,7 @@ class StoriesTableViewController: UITableViewController {
             maxValue = 8
             
             NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue) { stories in
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     self.stories.append(contentsOf: stories)
                     self.tableView.reloadData()
                 }
@@ -85,6 +95,19 @@ class StoriesTableViewController: UITableViewController {
         } else {
             fullStorieViewController.storieCategory = storie.components?.last?.kicker?.vertical?.name
         }
+    }
+    
+    @objc private func refresh(sender: UIRefreshControl) {
+        offsetValue = 0
+        maxValue = 18
+        
+        NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue) { stories in
+            DispatchQueue.main.async {
+                self.stories = stories
+                self.tableView.reloadData()
+            }
+        }
+        sender.endRefreshing()
     }
     
 }

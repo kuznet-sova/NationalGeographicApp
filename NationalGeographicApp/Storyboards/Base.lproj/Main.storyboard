@@ -153,6 +153,9 @@
                     <navigationItem key="navigationItem" title="Latest stories" largeTitleDisplayMode="never" id="rb3-S9-y9s">
                         <barButtonItem key="backBarButtonItem" title="Back" id="XHc-oD-KlS"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="storiesTableView" destination="3su-mg-TCi" id="unG-62-QlC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpp-fM-82b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
