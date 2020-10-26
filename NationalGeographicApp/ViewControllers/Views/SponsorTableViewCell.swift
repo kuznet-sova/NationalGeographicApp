@@ -12,18 +12,9 @@ class SponsorTableViewCell: UITableViewCell {
     
     @IBOutlet var titleTextLabel: UILabel!
     @IBOutlet var subtitleTextLabel: UILabel!
-    
-    func getStorieImage(with uri: String?, sponsorContent: Bool) {
-        let imageUrl = uri
-        
-        DispatchQueue.global().async {
-            guard let stringUrl = imageUrl,
-                let imageUrl = URL(string: stringUrl),
-                let imageData = try? Data(contentsOf: imageUrl) else { return }
-            DispatchQueue.main.async {
-                self.backgroundColor = UIColor(patternImage: UIImage(data: imageData)!)
-            }
-        }
+     
+    override func prepareForReuse() {
+        self.backgroundColor = nil
     }
 
 }

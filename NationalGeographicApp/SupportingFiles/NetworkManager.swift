@@ -6,9 +6,10 @@
 //  Copyright © 2020 Irina Kuznetsova. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
+//    private var spinnerView: UIActivityIndicatorView?
     
     static let shared = NetworkManager()
     
@@ -49,6 +50,27 @@ class NetworkManager {
                 print(error.localizedDescription)
             }
         }.resume()
+    }
+    
+    func getStorieImage(with uri: String?, sponsorContent: Bool, with complition: @escaping (Data) -> Void) {
+        let imageUrl = uri
+        
+//        spinnerView?.startAnimating()
+        
+        DispatchQueue.global().async {
+            guard let stringUrl = imageUrl,
+                let imageUrl = URL(string: stringUrl),
+                let imageData = try? Data(contentsOf: imageUrl) else {
+//                    DispatchQueue.main.async {
+//                        self.spinnerView?.stopAnimating()
+//                    }
+                    return
+            }
+//            DispatchQueue.main.async {
+//                self.spinnerView?.stopAnimating()
+//            }
+            complition(imageData)
+        }
     }
     
 }

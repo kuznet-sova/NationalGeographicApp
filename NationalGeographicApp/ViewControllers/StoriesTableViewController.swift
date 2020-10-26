@@ -11,6 +11,8 @@ import UIKit
 class StoriesTableViewController: UITableViewController {
     @IBOutlet var storiesTableView: UITableView!
     
+//    private var spinnerView: UIActivityIndicatorView?
+    
     private var offsetValue = 0
     private var maxValue = 18
     var stories: [Storie] = []
@@ -47,13 +49,21 @@ class StoriesTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sponsorCell", for: indexPath) as! SponsorTableViewCell
             let sponsorImageUrl = storie.leadMedia?.video?.image?.uri
             
-            cell.getStorieImage(with: sponsorImageUrl, sponsorContent: storie.sponsorContent)
+            NetworkManager.shared.getStorieImage(with: sponsorImageUrl, sponsorContent: storie.sponsorContent) {
+                imageData in
+                DispatchQueue.main.async {
+                    cell.backgroundColor = UIColor(patternImage: UIImage(data: imageData)!)
+                }
+            }
             cell.titleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
             cell.subtitleTextLabel.text = storie.components?[1].dek?.text ?? ""
             
             if sponsorImageUrl != nil {
                 cell.titleTextLabel.textColor = .white
                 cell.subtitleTextLabel.textColor = .white
+            } else {
+                cell.titleTextLabel.textColor = .black
+                cell.subtitleTextLabel.textColor = .black
             }
             
             return cell
@@ -61,7 +71,17 @@ class StoriesTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath) as! StorieTableViewCell
             let standardImageUrl = storie.leadMedia?.image?.uri
             
-            cell.getStorieImage(with: standardImageUrl, sponsorContent: storie.sponsorContent)
+//            spinnerView = showSpinner(in: cell.storieImageView)
+//            spinnerView?.startAnimating()
+            
+            NetworkManager.shared.getStorieImage(with: standardImageUrl, sponsorContent: storie.sponsorContent) {
+                imageData in
+                DispatchQueue.main.async {
+//                    self.spinnerView?.stopAnimating()
+                    cell.storieImageView.image = UIImage(data: imageData)
+                    cell.storieImageView.contentMode = UIView.ContentMode.scaleAspectFill
+                }
+            }
             cell.titleTextLabel.text = storie.components?.last?.kicker?.vertical?.name ?? ""
             cell.subtitleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
             
@@ -109,5 +129,16 @@ class StoriesTableViewController: UITableViewController {
         }
         sender.endRefreshing()
     }
+    
+//    private func showSpinner(in view: UIImageView) -> UIActivityIndicatorView {
+//        let activityIndicator = UIActivityIndicatorView(style: .large)
+//        activityIndicator.color = .gray
+//        activityIndicator.center = view.center
+//        activityIndicator.hidesWhenStopped = true
+//        
+//        view.addSubview(activityIndicator)
+//        
+//        return activityIndicator
+//    }
     
 }
