@@ -11,8 +11,6 @@ import UIKit
 class StoriesTableViewController: UITableViewController {
     @IBOutlet var storiesTableView: UITableView!
     
-//    private var spinnerView: UIActivityIndicatorView?
-    
     private var offsetValue = 0
     private var maxValue = 18
     var stories: [Storie] = []
@@ -50,9 +48,9 @@ class StoriesTableViewController: UITableViewController {
             let sponsorImageUrl = storie.leadMedia?.video?.image?.uri
             
             NetworkManager.shared.getStorieImage(with: sponsorImageUrl, sponsorContent: storie.sponsorContent) {
-                imageData in
+                image in
                 DispatchQueue.main.async {
-                    cell.backgroundColor = UIColor(patternImage: UIImage(data: imageData)!)
+                    cell.backgroundColor = UIColor(patternImage: image)
                 }
             }
             cell.titleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
@@ -71,14 +69,11 @@ class StoriesTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath) as! StorieTableViewCell
             let standardImageUrl = storie.leadMedia?.image?.uri
             
-//            spinnerView = showSpinner(in: cell.storieImageView)
-//            spinnerView?.startAnimating()
-            
             NetworkManager.shared.getStorieImage(with: standardImageUrl, sponsorContent: storie.sponsorContent) {
-                imageData in
+                image in
                 DispatchQueue.main.async {
-//                    self.spinnerView?.stopAnimating()
-                    cell.storieImageView.image = UIImage(data: imageData)
+                    cell.showSpinner(in: cell.storieImageView).stopAnimating()
+                    cell.storieImageView.image = image
                     cell.storieImageView.contentMode = UIView.ContentMode.scaleAspectFill
                 }
             }
@@ -95,7 +90,7 @@ class StoriesTableViewController: UITableViewController {
             maxValue = 8
             
             NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue) { stories in
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                DispatchQueue.main.async {
                     self.stories.append(contentsOf: stories)
                     self.tableView.reloadData()
                 }
@@ -129,16 +124,5 @@ class StoriesTableViewController: UITableViewController {
         }
         sender.endRefreshing()
     }
-    
-//    private func showSpinner(in view: UIImageView) -> UIActivityIndicatorView {
-//        let activityIndicator = UIActivityIndicatorView(style: .large)
-//        activityIndicator.color = .gray
-//        activityIndicator.center = view.center
-//        activityIndicator.hidesWhenStopped = true
-//        
-//        view.addSubview(activityIndicator)
-//        
-//        return activityIndicator
-//    }
     
 }

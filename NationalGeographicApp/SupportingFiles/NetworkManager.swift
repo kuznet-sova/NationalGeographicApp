@@ -9,9 +9,10 @@
 import UIKit
 
 class NetworkManager {
-//    private var spinnerView: UIActivityIndicatorView?
-    
     static let shared = NetworkManager()
+    
+    var cashedImages: [String: UIImage] = [:]
+    var dispatchQueue = DispatchQueue.global()
     
     func fetchData(offsetValue: Int, maxValue: Int, with complition: @escaping ([Storie]) -> Void) {
         let latestStoriesUrl = "https://www.nationalgeographic.com/latest-stories/_jcr_content/content/hubfeed.promo-hub-feed-all-stories.json?offset=\(offsetValue)&max=\(maxValue)"
@@ -52,24 +53,22 @@ class NetworkManager {
         }.resume()
     }
     
-    func getStorieImage(with uri: String?, sponsorContent: Bool, with complition: @escaping (Data) -> Void) {
+    func getStorieImage(with uri: String?, sponsorContent: Bool, with complition: @escaping (UIImage) -> Void) {
         let imageUrl = uri
+        guard let stringUrl = imageUrl else { return }
+
+        if let cashedImage = self.cashedImages[stringUrl] {
+            complition(cashedImage)
+            return
+        }
         
-//        spinnerView?.startAnimating()
-        
-        DispatchQueue.global().async {
-            guard let stringUrl = imageUrl,
-                let imageUrl = URL(string: stringUrl),
-                let imageData = try? Data(contentsOf: imageUrl) else {
-//                    DispatchQueue.main.async {
-//                        self.spinnerView?.stopAnimating()
-//                    }
-                    return
-            }
-//            DispatchQueue.main.async {
-//                self.spinnerView?.stopAnimating()
-//            }
-            complition(imageData)
+        dispatchQueue.async {
+            guard let imageUrl = URL(string: stringUrl),
+                let imageData = try? Data(contentsOf: imageUrl),
+                let image = UIImage(data: imageData) else { return }
+            
+            self.cashedImages.updateValue(image, forKey: stringUrl)
+            complition(image)
         }
     }
     
