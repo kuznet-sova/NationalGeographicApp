@@ -14,19 +14,16 @@ class StorieTableViewCell: UITableViewCell {
     @IBOutlet var subtitleTextLabel: UILabel!
     @IBOutlet var storieImageView: UIImageView!
     
+    var spinnerView: UIActivityIndicatorView?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        if storieImageView.image == nil {
-            showSpinner(in: storieImageView).startAnimating()
-        } else {
-            showSpinner(in: storieImageView).stopAnimating()
-        }
+        spinnerView = showSpinner(in: storieImageView)
     }
     
     override func prepareForReuse() {
         storieImageView.image = nil
-        showSpinner(in: storieImageView).stopAnimating()
+        spinnerView?.stopAnimating()
     }
     
     func showSpinner(in view: UIView) -> UIActivityIndicatorView {

@@ -68,11 +68,12 @@ class StoriesTableViewController: UITableViewController {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath) as! StorieTableViewCell
             let standardImageUrl = storie.leadMedia?.image?.uri
+            cell.spinnerView?.startAnimating()
             
             NetworkManager.shared.getStorieImage(with: standardImageUrl, sponsorContent: storie.sponsorContent) {
                 image in
                 DispatchQueue.main.async {
-                    cell.showSpinner(in: cell.storieImageView).stopAnimating()
+                    cell.spinnerView?.stopAnimating()
                     cell.storieImageView.image = image
                     cell.storieImageView.contentMode = UIView.ContentMode.scaleAspectFill
                 }
