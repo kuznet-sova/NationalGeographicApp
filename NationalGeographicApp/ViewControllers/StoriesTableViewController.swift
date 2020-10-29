@@ -42,12 +42,19 @@ class StoriesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let storie = stories[indexPath.row]
         let sponsor = storie.sponsorContent
+        var imageUrl: String?
+        
+        if storie.leadMedia?.image?.uri != nil {
+            imageUrl = storie.leadMedia?.image?.uri
+        } else if storie.leadMedia?.video?.image?.uri != nil {
+            imageUrl = storie.leadMedia?.video?.image?.uri
+        } else if storie.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri != nil {
+            imageUrl = storie.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri
+        }
 
         if sponsor {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sponsorCell", for: indexPath) as! SponsorTableViewCell
-            let sponsorImageUrl = storie.leadMedia?.video?.image?.uri
-            
-            NetworkManager.shared.getStorieImage(with: sponsorImageUrl, sponsorContent: storie.sponsorContent) {
+            NetworkManager.shared.getStorieImage(with: imageUrl, sponsorContent: storie.sponsorContent) {
                 image in
                 DispatchQueue.main.async {
                     cell.backgroundColor = UIColor(patternImage: image)
@@ -56,21 +63,17 @@ class StoriesTableViewController: UITableViewController {
             cell.titleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
             cell.subtitleTextLabel.text = storie.components?[1].dek?.text ?? ""
             
-            if sponsorImageUrl != nil {
+            if imageUrl != nil {
                 cell.titleTextLabel.textColor = .white
                 cell.subtitleTextLabel.textColor = .white
-            } else {
-                cell.titleTextLabel.textColor = .black
-                cell.subtitleTextLabel.textColor = .black
             }
             
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath) as! StorieTableViewCell
-            let standardImageUrl = storie.leadMedia?.image?.uri
             cell.spinnerView?.startAnimating()
             
-            NetworkManager.shared.getStorieImage(with: standardImageUrl, sponsorContent: storie.sponsorContent) {
+            NetworkManager.shared.getStorieImage(with: imageUrl, sponsorContent: storie.sponsorContent) {
                 image in
                 DispatchQueue.main.async {
                     cell.spinnerView?.stopAnimating()

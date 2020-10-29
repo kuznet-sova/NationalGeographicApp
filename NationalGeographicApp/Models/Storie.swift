@@ -28,6 +28,12 @@ struct Storie: Decodable {
 struct LeadMedia: Decodable {
     let image: Image?
     let video: Video?
+    let immersiveLead: ImmersiveLead?
+    
+    enum CodingKeys: String, CodingKey {
+        case image, video
+        case immersiveLead = "immersive_lead"
+    }
 }
 
 struct Video: Decodable {
@@ -36,6 +42,18 @@ struct Video: Decodable {
 
 struct Image: Decodable {
     let uri: String?
+}
+
+struct ImmersiveLead: Decodable {
+    let immersiveLeadMedia: ImmersiveLeadMedia?
+
+    enum CodingKeys: String, CodingKey {
+        case immersiveLeadMedia = "lead_media"
+    }
+}
+
+struct ImmersiveLeadMedia: Decodable {
+    let image: Image?
 }
 
 struct Component: Decodable {
