@@ -72,4 +72,12 @@ class NetworkManager {
         }
     }
     
+    func getDefaultImage(imageName: String, with complition: @escaping (UIImageView) -> Void) {
+        let defaultImage = UIImageView(frame: UIScreen.main.bounds)
+        defaultImage.image = UIImage(named: imageName)
+        defaultImage.contentMode = UIView.ContentMode.scaleAspectFill
+        
+        complition(defaultImage)
+    }
+    
 }

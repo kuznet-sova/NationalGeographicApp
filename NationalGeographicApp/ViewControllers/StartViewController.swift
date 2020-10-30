@@ -12,14 +12,11 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getBackgroundImage(imageName: "NatGeoLogo.png")
-    }
-    
-    private func getBackgroundImage(imageName: String) {
-        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = UIImage(named: imageName)
-        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
-        self.view.insertSubview(backgroundImage, at: 0)
+        
+        NetworkManager.shared.getDefaultImage(imageName: "NatGeoLogo.png") {
+            defaultImage in
+            self.view.insertSubview(defaultImage, at: 0)
+        }
     }
     
 }
