@@ -10,10 +10,13 @@ import UIKit
 
 class StoriesTableViewController: UITableViewController {
     @IBOutlet var storiesTableView: UITableView!
+    @IBOutlet var filteringBarButtonItem: UIBarButtonItem!
     
     private var offsetValue = 0
     private var maxValue = 18
     var stories: [Storie] = []
+    
+    let categories = Categories()
     
     let refresh: UIRefreshControl = {
         let refreshControl = UIRefreshControl()

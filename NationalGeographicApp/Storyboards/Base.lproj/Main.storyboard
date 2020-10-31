@@ -152,8 +152,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Latest stories" largeTitleDisplayMode="never" id="rb3-S9-y9s">
                         <barButtonItem key="backBarButtonItem" title="Back" id="XHc-oD-KlS"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.horizontal.3.decrease" catalog="system" id="zH6-yE-lWQ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="filteringBarButtonItem" destination="zH6-yE-lWQ" id="Qr9-RO-F3K"/>
                         <outlet property="storiesTableView" destination="3su-mg-TCi" id="unG-62-QlC"/>
                     </connections>
                 </tableViewController>
@@ -219,6 +221,7 @@
         <segue reference="7Rj-ek-GFD"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
