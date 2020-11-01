@@ -8,15 +8,17 @@
 
 import UIKit
 
+protocol ChoosenCategoryDelegate {
+    func delegateChoosenCategory(_ choosenCategory: String)
+}
+
 class StoriesTableViewController: UITableViewController {
     @IBOutlet var storiesTableView: UITableView!
-    @IBOutlet var filteringBarButtonItem: UIBarButtonItem!
     
     private var offsetValue = 0
     private var maxValue = 18
     var stories: [Storie] = []
-    
-    let categories = Categories()
+    var category = "All"
     
     let refresh: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -132,4 +134,10 @@ class StoriesTableViewController: UITableViewController {
         sender.endRefreshing()
     }
     
+}
+
+extension StoriesTableViewController: ChoosenCategoryDelegate {
+    func delegateChoosenCategory(_ choosenCategory: String) {
+        self.category = choosenCategory
+    }
 }

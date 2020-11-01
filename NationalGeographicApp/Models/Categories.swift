@@ -9,7 +9,8 @@
 import Foundation
 
 struct Categories {
-    let categories = [
+    let nameCategories = [
+        "All",
         "Animals",
         "History & Culture",
         "Science",
