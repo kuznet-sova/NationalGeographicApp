@@ -198,7 +198,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Choose this"/>
                                         <connections>
-                                            <action selector="doneChooseButton:" destination="Wts-az-gPf" eventType="touchUpInside" id="22j-Q1-jKH"/>
+                                            <action selector="doneChooseButton" destination="Wts-az-gPf" eventType="touchUpInside" id="i5t-Hr-cAV"/>
                                         </connections>
                                     </button>
                                 </subviews>

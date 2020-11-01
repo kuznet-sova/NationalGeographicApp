@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ChoosenCategoryDelegate {
-    func delegateChoosenCategory(_ choosenCategory: String)
+    func getChoosenCategory(_ choosenCategory: String)
 }
 
 class StoriesTableViewController: UITableViewController {
@@ -137,7 +137,7 @@ class StoriesTableViewController: UITableViewController {
 }
 
 extension StoriesTableViewController: ChoosenCategoryDelegate {
-    func delegateChoosenCategory(_ choosenCategory: String) {
-        self.category = choosenCategory
+    func getChoosenCategory(_ choosenCategory: String) {
+        category = choosenCategory
     }
 }

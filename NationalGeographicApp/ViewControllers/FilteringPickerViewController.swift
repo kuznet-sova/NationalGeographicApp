@@ -13,7 +13,6 @@ class FilteringPickerViewController: UIViewController {
     
     let categories = Categorie.getCategorie()
     var choosenCategory = "All"
-    
     var delegateCategory: ChoosenCategoryDelegate!
     
     override func viewDidLoad() {
@@ -23,9 +22,10 @@ class FilteringPickerViewController: UIViewController {
     }
 
     @IBAction func doneChooseButton() {
-        delegateCategory.delegateChoosenCategory(choosenCategory)
-        dismiss(animated: true)
+        delegateCategory.getChoosenCategory(choosenCategory)
+//        dismiss(animated: true)
     }
+
 }
 
 extension FilteringPickerViewController: UIPickerViewDataSource {
