@@ -8,17 +8,17 @@
 
 import Foundation
 
-struct Categorie {
+struct Category {
     let nameCategorie: String
 }
 
-extension Categorie {
-    static func getCategorie() -> [Categorie] {
-        var categoriesList = [Categorie]()
+extension Category {
+    static func getCategorie() -> [Category] {
+        var categoriesList = [Category]()
 
         for index in 0 ..< Categories().nameCategories.count {
             categoriesList.append (
-                Categorie (
+                Category (
                     nameCategorie: Categories().nameCategories[index]
                 )
             )

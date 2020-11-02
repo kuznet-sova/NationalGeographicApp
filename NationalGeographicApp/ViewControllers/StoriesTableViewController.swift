@@ -15,6 +15,8 @@ protocol ChoosenCategoryDelegate: AnyObject {
 class StoriesTableViewController: UITableViewController {
     @IBOutlet var storiesTableView: UITableView!
     
+    static let shared = StoriesTableViewController()
+    
     private var offsetValue = 0
     private var maxValue = 18
     var stories: [Storie] = []

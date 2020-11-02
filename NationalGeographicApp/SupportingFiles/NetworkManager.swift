@@ -27,31 +27,58 @@ class NetworkManager {
 
             do {
                 let storiesList = try decoder.decode([Storie].self, from: data)
-                var stories = [Storie]()
                 
-                for index in 0 ..< storiesList.count {
-                    
-                    if (storiesList[index].buttonLabel.contains("Read")
-                        && storiesList[index].components?.last?.kicker?.vertical?.name == category)
-                        && (storiesList[index].leadMedia?.image?.uri != nil
-                        || storiesList[index].sponsorContent) {
-                        stories.append(
-                            Storie(id: storiesList[index].id,
-                                   uri: storiesList[index].uri,
-                                   buttonLabel: storiesList[index].buttonLabel,
-                                   sponsorContent: storiesList[index].sponsorContent,
-                                   sponsorContentLabel: storiesList[index].sponsorContentLabel,
-                                   leadMedia: storiesList[index].leadMedia,
-                                   components: storiesList[index].components)
-                        )
-                    }
+                if category == "Partner Content" {
+                    complition(self.getData(storiesList: storiesList, category: nil))
+                } else {
+                    complition(self.getData(storiesList: storiesList, category: category))
                 }
                 
-                complition(stories)
             } catch let error {
                 print(error.localizedDescription)
             }
         }.resume()
+    }
+    
+    private func getData(storiesList: [Storie], category: String?) -> [Storie] {
+        var stories = [Storie]()
+        
+        for index in 0 ..< storiesList.count {
+            
+            if category == "All" {
+                if storiesList[index].buttonLabel.contains("Read")
+                    && (storiesList[index].leadMedia?.image?.uri != nil
+                    || storiesList[index].sponsorContent) {
+                    stories.append(
+                        Storie(id: storiesList[index].id,
+                               uri: storiesList[index].uri,
+                               buttonLabel: storiesList[index].buttonLabel,
+                               sponsorContent: storiesList[index].sponsorContent,
+                               sponsorContentLabel: storiesList[index].sponsorContentLabel,
+                               leadMedia: storiesList[index].leadMedia,
+                               components: storiesList[index].components)
+                    )
+                }
+            } else {
+                if storiesList[index].buttonLabel.contains("Read")
+                    && storiesList[index].components?.last?.kicker?.vertical?.name == category
+                    && (storiesList[index].leadMedia?.image?.uri != nil
+                    || storiesList[index].sponsorContent) {
+                    stories.append(
+                        Storie(id: storiesList[index].id,
+                               uri: storiesList[index].uri,
+                               buttonLabel: storiesList[index].buttonLabel,
+                               sponsorContent: storiesList[index].sponsorContent,
+                               sponsorContentLabel: storiesList[index].sponsorContentLabel,
+                               leadMedia: storiesList[index].leadMedia,
+                               components: storiesList[index].components)
+                    )
+                }
+            }
+            
+        }
+        
+        return stories
     }
     
     func getStorieImage(with uri: String?, sponsorContent: Bool, with complition: @escaping (UIImage) -> Void) {

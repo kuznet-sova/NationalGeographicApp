@@ -16,7 +16,6 @@ struct Categories {
         "Science",
         "Travel",
         "Environment",
-        "Partner Content",
-        "Other"
+        "Partner Content"
     ]
 }

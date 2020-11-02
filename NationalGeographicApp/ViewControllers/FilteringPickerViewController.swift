@@ -11,7 +11,7 @@ import UIKit
 class FilteringPickerViewController: UIViewController {
     @IBOutlet var filteringPickerView: UIPickerView!
     
-    let categories = Categorie.getCategorie()
+    let categories = Category.getCategorie()
     var choosenCategory: String!
     var delegateCategory: ChoosenCategoryDelegate?
     
