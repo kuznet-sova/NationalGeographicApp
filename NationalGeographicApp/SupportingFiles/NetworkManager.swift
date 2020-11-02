@@ -14,7 +14,7 @@ class NetworkManager {
     var cashedImages: [String: UIImage] = [:]
     var dispatchQueue = DispatchQueue.global()
     
-    func fetchData(offsetValue: Int, maxValue: Int, with complition: @escaping ([Storie]) -> Void) {
+    func fetchData(offsetValue: Int, maxValue: Int, category: String, with complition: @escaping ([Storie]) -> Void) {
         let latestStoriesUrl = "https://www.nationalgeographic.com/latest-stories/_jcr_content/content/hubfeed.promo-hub-feed-all-stories.json?offset=\(offsetValue)&max=\(maxValue)"
         
         guard let url = URL(string: latestStoriesUrl) else { return }
@@ -31,9 +31,10 @@ class NetworkManager {
                 
                 for index in 0 ..< storiesList.count {
                     
-                    if storiesList[index].buttonLabel.contains("Read")
-                        && storiesList[index].leadMedia?.image?.uri != nil
-                        || storiesList[index].sponsorContent {
+                    if (storiesList[index].buttonLabel.contains("Read")
+                        && storiesList[index].components?.last?.kicker?.vertical?.name == category)
+                        && (storiesList[index].leadMedia?.image?.uri != nil
+                        || storiesList[index].sponsorContent) {
                         stories.append(
                             Storie(id: storiesList[index].id,
                                    uri: storiesList[index].uri,

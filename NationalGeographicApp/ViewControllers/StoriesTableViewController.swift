@@ -32,7 +32,7 @@ class StoriesTableViewController: UITableViewController {
         
         storiesTableView.refreshControl = refresh
 
-        NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue) { stories in
+        NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue, category: category) { stories in
             DispatchQueue.main.async {
                 self.stories = stories
                 self.tableView.reloadData()
@@ -96,7 +96,7 @@ class StoriesTableViewController: UITableViewController {
             offsetValue += maxValue
             maxValue = 8
             
-            NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue) { stories in
+            NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue, category: category) { stories in
                 DispatchQueue.main.async {
                     self.stories.append(contentsOf: stories)
                     self.tableView.reloadData()
@@ -126,11 +126,26 @@ class StoriesTableViewController: UITableViewController {
         }
     }
     
+//    private func filteringStories() {
+////        var filteringStories: [Storie] = []
+//        
+//        switch category {
+//        case "All":
+////            category =
+//        case "Partner Content":
+//            category = nil
+//        case "Other":
+////            category = 
+//        default:
+//            print("category = default")
+//        }
+//    }
+    
     @objc private func refresh(sender: UIRefreshControl) {
         offsetValue = 0
         maxValue = 18
         
-        NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue) { stories in
+        NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue, category: category) { stories in
             DispatchQueue.main.async {
                 self.stories = stories
                 self.tableView.reloadData()
