@@ -11,7 +11,7 @@ import UIKit
 class FilteringPickerViewController: UIViewController {
     @IBOutlet var filteringPickerView: UIPickerView!
     
-    let categories = Category.getCategorie()
+    let categories = Category.getCategory()
     var choosenCategory: String!
     var delegateCategory: ChoosenCategoryDelegate?
     
@@ -41,11 +41,11 @@ extension FilteringPickerViewController: UIPickerViewDataSource {
 extension FilteringPickerViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let catigorie = categories[row]
-        choosenCategory = catigorie.nameCategorie
+        choosenCategory = catigorie.nameCategory
         return choosenCategory
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        choosenCategory = categories[row].nameCategorie
+        choosenCategory = categories[row].nameCategory
     }
 }

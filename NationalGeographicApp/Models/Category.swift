@@ -1,5 +1,5 @@
 //
-//  Categorie.swift
+//  Category.swift
 //  NationalGeographicApp
 //
 //  Created by Ирина Кузнецова on 01.11.2020.
@@ -9,17 +9,17 @@
 import Foundation
 
 struct Category {
-    let nameCategorie: String
+    let nameCategory: String
 }
 
 extension Category {
-    static func getCategorie() -> [Category] {
+    static func getCategory() -> [Category] {
         var categoriesList = [Category]()
 
         for index in 0 ..< Categories().nameCategories.count {
             categoriesList.append (
                 Category (
-                    nameCategorie: Categories().nameCategories[index]
+                    nameCategory: Categories().nameCategories[index]
                 )
             )
         }
