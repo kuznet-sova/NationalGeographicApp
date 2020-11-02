@@ -67,8 +67,10 @@ class NetworkManager {
                 let imageData = try? Data(contentsOf: imageUrl),
                 let image = UIImage(data: imageData) else { return }
             
-            self.cashedImages.updateValue(image, forKey: stringUrl)
-            complition(image)
+            DispatchQueue.main.async {
+                self.cashedImages.updateValue(image, forKey: stringUrl)
+                complition(image)
+            }
         }
     }
     

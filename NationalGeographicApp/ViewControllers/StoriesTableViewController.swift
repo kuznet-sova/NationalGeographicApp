@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ChoosenCategoryDelegate {
+protocol ChoosenCategoryDelegate: AnyObject {
     func getChoosenCategory(_ choosenCategory: String)
 }
 
@@ -80,11 +80,9 @@ class StoriesTableViewController: UITableViewController {
             
             NetworkManager.shared.getStorieImage(with: imageUrl, sponsorContent: storie.sponsorContent) {
                 image in
-                DispatchQueue.main.async {
-                    cell.spinnerView?.stopAnimating()
-                    cell.storieImageView.image = image
-                    cell.storieImageView.contentMode = UIView.ContentMode.scaleAspectFill
-                }
+                cell.spinnerView?.stopAnimating()
+                cell.storieImageView.image = image
+                cell.storieImageView.contentMode = UIView.ContentMode.scaleAspectFill
             }
             cell.titleTextLabel.text = storie.components?.last?.kicker?.vertical?.name ?? ""
             cell.subtitleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
@@ -112,6 +110,7 @@ class StoriesTableViewController: UITableViewController {
             guard let filteringPickerViewController = segue.destination as? FilteringPickerViewController
             else { return }
             filteringPickerViewController.choosenCategory = category
+            filteringPickerViewController.delegateCategory = self
         } else {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let storie = stories[indexPath.row]
