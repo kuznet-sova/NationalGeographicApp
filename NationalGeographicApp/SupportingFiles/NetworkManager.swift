@@ -40,6 +40,35 @@ class NetworkManager {
         }.resume()
     }
     
+    func getStorieImage(with uri: String?, sponsorContent: Bool, with complition: @escaping (UIImage) -> Void) {
+        let imageUrl = uri
+        guard let stringUrl = imageUrl else { return }
+
+        if let cashedImage = self.cashedImages[stringUrl] {
+            complition(cashedImage)
+            return
+        }
+        
+        dispatchQueue.async {
+            guard let imageUrl = URL(string: stringUrl),
+                let imageData = try? Data(contentsOf: imageUrl),
+                let image = UIImage(data: imageData) else { return }
+            
+            DispatchQueue.main.async {
+                self.cashedImages.updateValue(image, forKey: stringUrl)
+                complition(image)
+            }
+        }
+    }
+    
+    func getDefaultImage(imageName: String, with complition: @escaping (UIImageView) -> Void) {
+        let defaultImage = UIImageView(frame: UIScreen.main.bounds)
+        defaultImage.image = UIImage(named: imageName)
+        defaultImage.contentMode = UIView.ContentMode.scaleAspectFill
+        
+        complition(defaultImage)
+    }
+    
     private func getData(storiesList: [Storie], category: String?) -> [Storie] {
         var stories = [Storie]()
         
@@ -79,35 +108,6 @@ class NetworkManager {
         }
         
         return stories
-    }
-    
-    func getStorieImage(with uri: String?, sponsorContent: Bool, with complition: @escaping (UIImage) -> Void) {
-        let imageUrl = uri
-        guard let stringUrl = imageUrl else { return }
-
-        if let cashedImage = self.cashedImages[stringUrl] {
-            complition(cashedImage)
-            return
-        }
-        
-        dispatchQueue.async {
-            guard let imageUrl = URL(string: stringUrl),
-                let imageData = try? Data(contentsOf: imageUrl),
-                let image = UIImage(data: imageData) else { return }
-            
-            DispatchQueue.main.async {
-                self.cashedImages.updateValue(image, forKey: stringUrl)
-                complition(image)
-            }
-        }
-    }
-    
-    func getDefaultImage(imageName: String, with complition: @escaping (UIImageView) -> Void) {
-        let defaultImage = UIImageView(frame: UIScreen.main.bounds)
-        defaultImage.image = UIImage(named: imageName)
-        defaultImage.contentMode = UIView.ContentMode.scaleAspectFill
-        
-        complition(defaultImage)
     }
     
 }
