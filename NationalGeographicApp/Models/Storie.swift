@@ -13,6 +13,7 @@ struct Storie: Decodable {
     let sponsorContent: Bool
     let sponsorContentLabel: String?
     let leadMedia: LeadMedia?
+    let promoImage: PromoImage?
     let components: [Component]?
     
     enum CodingKeys: String, CodingKey {
@@ -21,6 +22,7 @@ struct Storie: Decodable {
         case sponsorContent = "sponsor_content"
         case sponsorContentLabel = "sponsor_content_label"
         case leadMedia = "lead_media"
+        case promoImage = "promo_image"
         case components
     }
 }
@@ -34,6 +36,10 @@ struct LeadMedia: Decodable {
         case image, video
         case immersiveLead = "immersive_lead"
     }
+}
+
+struct PromoImage: Decodable {
+    let image: Image?
 }
 
 struct Video: Decodable {
@@ -54,6 +60,7 @@ struct ImmersiveLead: Decodable {
 
 struct ImmersiveLeadMedia: Decodable {
     let image: Image?
+    let video: Video?
 }
 
 struct Component: Decodable {

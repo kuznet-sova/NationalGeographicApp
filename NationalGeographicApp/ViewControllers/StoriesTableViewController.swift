@@ -55,6 +55,10 @@ class StoriesTableViewController: UITableViewController {
             imageUrl = storie.leadMedia?.video?.image?.uri
         } else if storie.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri != nil {
             imageUrl = storie.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri
+        } else if storie.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri != nil {
+            imageUrl = storie.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri
+        } else if storie.promoImage?.image?.uri != nil {
+            imageUrl = storie.promoImage?.image?.uri
         }
 
         if sponsor {

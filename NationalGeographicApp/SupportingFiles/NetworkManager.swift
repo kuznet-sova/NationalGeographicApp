@@ -85,6 +85,7 @@ class NetworkManager {
                                sponsorContent: storiesList[index].sponsorContent,
                                sponsorContentLabel: storiesList[index].sponsorContentLabel,
                                leadMedia: storiesList[index].leadMedia,
+                               promoImage: storiesList[index].promoImage,
                                components: storiesList[index].components)
                     )
                 }
@@ -100,6 +101,7 @@ class NetworkManager {
                                sponsorContent: storiesList[index].sponsorContent,
                                sponsorContentLabel: storiesList[index].sponsorContentLabel,
                                leadMedia: storiesList[index].leadMedia,
+                               promoImage: storiesList[index].promoImage,
                                components: storiesList[index].components)
                     )
                 }
