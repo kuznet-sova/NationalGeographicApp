@@ -108,16 +108,22 @@ class StoriesTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        let storie = stories[indexPath.row]
-        let sponsor = storie.sponsorContent
-        let fullStorieViewController = segue.destination as! FullStorieViewController
-        
-        fullStorieViewController.storieUrl = storie.uri
-        if sponsor {
-            fullStorieViewController.storieCategory = storie.sponsorContentLabel
+        if segue.identifier == "filter" {
+            guard let filteringPickerViewController = segue.destination as? FilteringPickerViewController
+            else { return }
+            filteringPickerViewController.choosenCategory = category
         } else {
-            fullStorieViewController.storieCategory = storie.components?.last?.kicker?.vertical?.name
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let storie = stories[indexPath.row]
+            let sponsor = storie.sponsorContent
+            let fullStorieViewController = segue.destination as! FullStorieViewController
+            
+            fullStorieViewController.storieUrl = storie.uri
+            if sponsor {
+                fullStorieViewController.storieCategory = storie.sponsorContentLabel
+            } else {
+                fullStorieViewController.storieCategory = storie.components?.last?.kicker?.vertical?.name
+            }
         }
     }
     

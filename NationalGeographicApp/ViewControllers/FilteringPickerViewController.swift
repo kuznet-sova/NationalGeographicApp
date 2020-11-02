@@ -12,7 +12,7 @@ class FilteringPickerViewController: UIViewController {
     @IBOutlet var filteringPickerView: UIPickerView!
     
     let categories = Categorie.getCategorie()
-    var choosenCategory = "All"
+    var choosenCategory: String!
     var delegateCategory: ChoosenCategoryDelegate!
     
     override func viewDidLoad() {
