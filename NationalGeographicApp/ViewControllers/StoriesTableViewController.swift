@@ -15,8 +15,6 @@ protocol ChoosenCategoryDelegate: AnyObject {
 class StoriesTableViewController: UITableViewController {
     @IBOutlet var storiesTableView: UITableView!
     
-    static let shared = StoriesTableViewController()
-    
     private var offsetValue = 0
     private var maxValue = 18
     var stories: [Storie] = []
@@ -127,21 +125,6 @@ class StoriesTableViewController: UITableViewController {
             }
         }
     }
-    
-//    private func filteringStories() {
-////        var filteringStories: [Storie] = []
-//        
-//        switch category {
-//        case "All":
-////            category =
-//        case "Partner Content":
-//            category = nil
-//        case "Other":
-////            category = 
-//        default:
-//            print("category = default")
-//        }
-//    }
     
     @objc private func refresh(sender: UIRefreshControl) {
         offsetValue = 0
