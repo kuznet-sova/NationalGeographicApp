@@ -71,11 +71,8 @@ class StoriesTableViewController: UITableViewController {
             }
             cell.titleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
             cell.subtitleTextLabel.text = storie.components?[1].dek?.text ?? ""
-            
-            if imageUrl != nil {
-                cell.titleTextLabel.textColor = .white
-                cell.subtitleTextLabel.textColor = .white
-            }
+            cell.titleTextLabel.textColor = .white
+            cell.subtitleTextLabel.textColor = .white
             
             return cell
         } else {

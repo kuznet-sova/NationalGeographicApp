@@ -14,7 +14,7 @@ class SponsorTableViewCell: UITableViewCell {
     @IBOutlet var subtitleTextLabel: UILabel!
      
     override func prepareForReuse() {
-        self.backgroundColor = nil
+        self.backgroundColor = #colorLiteral(red: 0.7517699003, green: 0.7517699003, blue: 0.7517699003, alpha: 1)
     }
 
 }
