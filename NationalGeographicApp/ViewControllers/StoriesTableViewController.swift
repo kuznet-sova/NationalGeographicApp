@@ -144,6 +144,17 @@ class StoriesTableViewController: UITableViewController {
 
 extension StoriesTableViewController: ChoosenCategoryDelegate {
     func getChoosenCategory(_ choosenCategory: String) {
-        category = choosenCategory
+        if choosenCategory != category {
+            offsetValue = 0
+            maxValue = 18
+            category = choosenCategory
+            
+            NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue, category: category) { stories in
+                DispatchQueue.main.async {
+                    self.stories = stories
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
 }
