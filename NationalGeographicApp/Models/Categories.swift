@@ -6,8 +6,6 @@
 //  Copyright © 2020 Irina Kuznetsova. All rights reserved.
 //
 
-import Foundation
-
 struct Categories {
     let nameCategories = [
         "All",

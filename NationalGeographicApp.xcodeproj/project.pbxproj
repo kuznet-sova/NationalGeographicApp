@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C7152352551A06500F8054D /* PhotoOfTheDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7152342551A06500F8054D /* PhotoOfTheDay.swift */; };
 		8C88C5D3253B7C490025985E /* SponsorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C88C5D2253B7C490025985E /* SponsorTableViewCell.swift */; };
 		8C9A353C252F2CDF00FC4835 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A353B252F2CDF00FC4835 /* AppDelegate.swift */; };
 		8C9A353E252F2CDF00FC4835 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9A353D252F2CDF00FC4835 /* SceneDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C7152342551A06500F8054D /* PhotoOfTheDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoOfTheDay.swift; sourceTree = "<group>"; };
 		8C88C5D2253B7C490025985E /* SponsorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorTableViewCell.swift; sourceTree = "<group>"; };
 		8C9A3538252F2CDF00FC4835 /* NationalGeographicApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NationalGeographicApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C9A353B252F2CDF00FC4835 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				8C9A35572530E2E900FC4835 /* Storie.swift */,
 				8CDF3EDF254E17AC0082988B /* Categories.swift */,
 				8CDF3EE6254EE5220082988B /* Category.swift */,
+				8C7152342551A06500F8054D /* PhotoOfTheDay.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				8CDF3EE7254EE5220082988B /* Category.swift in Sources */,
 				8C88C5D3253B7C490025985E /* SponsorTableViewCell.swift in Sources */,
 				8CC745512534CCAE00CC7083 /* StorieTableViewCell.swift in Sources */,
+				8C7152352551A06500F8054D /* PhotoOfTheDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

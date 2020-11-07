@@ -40,6 +40,28 @@ class NetworkManager {
         }.resume()
     }
     
+    func photoData(with complition: @escaping (PhotoOfTheDay) -> Void) {
+        let photoUrl = "https://www.nationalgeographic.com/photography/photo-of-the-day/_jcr_content/.syndication-gallery.json"
+        
+        guard let url = URL(string: photoUrl) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+            if let error = error { print(error); return }
+            guard let data = data else { return }
+            
+            let decoder = JSONDecoder()
+
+            do {
+                let photoInfo = try decoder.decode(PhotoOfTheDay.self, from: data)
+                
+                complition(photoInfo)
+                
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }.resume()
+    }
+    
     func getStorieImage(with uri: String?, sponsorContent: Bool, with complition: @escaping (UIImage) -> Void) {
         let imageUrl = uri
         guard let stringUrl = imageUrl else { return }
@@ -67,6 +89,19 @@ class NetworkManager {
         defaultImage.contentMode = UIView.ContentMode.scaleAspectFill
         
         complition(defaultImage)
+    }
+    
+    func getPhoto(with uri: String?, with complition: @escaping (UIImage) -> Void) {
+        let photoUrl = uri
+        guard let stringUrl = photoUrl else { return }
+
+        dispatchQueue.async {
+            guard let photoUrl = URL(string: stringUrl),
+                let photoData = try? Data(contentsOf: photoUrl),
+                let photo = UIImage(data: photoData) else { return }
+            
+            complition(photo)
+        }
     }
     
     private func getData(storiesList: [Storie], category: String?) -> [Storie] {
@@ -110,6 +145,17 @@ class NetworkManager {
         }
         
         return stories
+    }
+    
+    func showSpinner(in view: UIView) -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .gray
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+
+        view.addSubview(activityIndicator)
+
+        return activityIndicator
     }
     
 }

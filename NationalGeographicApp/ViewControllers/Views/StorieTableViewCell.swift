@@ -18,23 +18,12 @@ class StorieTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        spinnerView = showSpinner(in: storieImageView)
+        spinnerView = NetworkManager.shared.showSpinner(in: storieImageView)
     }
     
     override func prepareForReuse() {
         storieImageView.image = nil
         spinnerView?.stopAnimating()
     }
-    
-    func showSpinner(in view: UIView) -> UIActivityIndicatorView {
-            let activityIndicator = UIActivityIndicatorView(style: .large)
-            activityIndicator.color = .gray
-            activityIndicator.center = storieImageView.center
-            activityIndicator.hidesWhenStopped = true
-
-            view.addSubview(activityIndicator)
-
-            return activityIndicator
-        }
     
 }
