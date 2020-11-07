@@ -10,19 +10,13 @@ import UIKit
 
 class StartViewController: UIViewController {
     @IBOutlet var photoOfTheDayImageView: UIImageView!
-    
+    @IBOutlet var photoOfTheDayLabel: UILabel!
+
     var photoUri: String?
+    var photoCaption: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let widthImageView = photoOfTheDayImageView.frame.width
-//        photoOfTheDayImageView.frame = CGRect(x: 0,
-//                                              y: 0,
-//                                              width: widthImageView,
-//                                              height: widthImageView / 2)
-
-        photoOfTheDayImageView.backgroundColor = .green
         
         NetworkManager.shared.getDefaultImage(imageName: "NatGeoLogo.png") {
             defaultImage in
@@ -33,6 +27,8 @@ class StartViewController: UIViewController {
             photoInfo in
             DispatchQueue.main.async {
                 self.photoUri = photoInfo.items.first?.image?.uri
+                self.photoCaption = photoInfo.items.first?.image?.caption
+                self.photoOfTheDayLabel.text = "\(self.photoCaption ?? "Photo of the day:")"
                 
                 NetworkManager.shared.getPhoto(with: self.photoUri) {
                     photo in
@@ -43,6 +39,7 @@ class StartViewController: UIViewController {
                 }
             }
         }
+        
     }
 
 }

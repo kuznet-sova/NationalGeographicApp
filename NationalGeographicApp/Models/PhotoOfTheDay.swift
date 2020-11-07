@@ -16,4 +16,5 @@ struct Item: Decodable {
 
 struct Photo: Decodable {
     let uri: String?
+    let caption: String?
 }
