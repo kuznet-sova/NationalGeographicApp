@@ -12,15 +12,18 @@ class StartViewController: UIViewController {
     @IBOutlet var photoOfTheDayImageView: UIImageView!
     @IBOutlet var photoOfTheDayLabel: UILabel!
 
+    var spinnerView: UIActivityIndicatorView?
     var photoUri: String?
     var photoCaption: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        spinnerView = NetworkManager.shared.showSpinner(in: view)
         
         NetworkManager.shared.getDefaultImage(imageName: "NatGeoLogo.png") {
             defaultImage in
             self.view.insertSubview(defaultImage, at: 0)
+            self.spinnerView?.startAnimating()
         }
         
         NetworkManager.shared.photoData() {
@@ -33,6 +36,7 @@ class StartViewController: UIViewController {
                 NetworkManager.shared.getPhoto(with: self.photoUri) {
                     photo in
                     DispatchQueue.main.async {
+                        self.spinnerView?.stopAnimating()
                         self.photoOfTheDayImageView.image = photo
                         self.photoOfTheDayImageView.contentMode = UIView.ContentMode.scaleAspectFill
                     }
