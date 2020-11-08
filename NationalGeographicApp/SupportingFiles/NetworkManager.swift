@@ -104,6 +104,17 @@ class NetworkManager {
         }
     }
     
+    func showSpinner(in view: UIView) -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.color = .gray
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+
+        view.addSubview(activityIndicator)
+
+        return activityIndicator
+    }
+    
     private func getData(storiesList: [Storie], category: String?) -> [Storie] {
         var stories = [Storie]()
         
@@ -145,17 +156,6 @@ class NetworkManager {
         }
         
         return stories
-    }
-    
-    func showSpinner(in view: UIView) -> UIActivityIndicatorView {
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.color = .gray
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-
-        view.addSubview(activityIndicator)
-
-        return activityIndicator
     }
     
 }
