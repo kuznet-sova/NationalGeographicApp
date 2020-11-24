@@ -120,35 +120,17 @@ class NetworkManager {
         
         for index in 0 ..< storiesList.count {
             
-            if category == "All" {
-                if storiesList[index].buttonLabel.contains("Read")
-                    && (storiesList[index].leadMedia?.image?.uri != nil
-                    || storiesList[index].sponsorContent) {
-                    stories.append(
-                        Storie(id: storiesList[index].id,
-                               uri: storiesList[index].uri,
-                               buttonLabel: storiesList[index].buttonLabel,
-                               sponsorContent: storiesList[index].sponsorContent,
-                               sponsorContentLabel: storiesList[index].sponsorContentLabel,
-                               leadMedia: storiesList[index].leadMedia,
-                               promoImage: storiesList[index].promoImage,
-                               components: storiesList[index].components)
-                    )
-                }
+            if category == "All"
+                && storiesList[index].buttonLabel.contains("Read")
+                && (storiesList[index].leadMedia?.image?.uri != nil
+                        || storiesList[index].sponsorContent) {
+                stories.append(
+                    storiesList[index]
+                )
             } else {
-                if storiesList[index].buttonLabel.contains("Read")
-                    && storiesList[index].components?.last?.kicker?.vertical?.name == category
-                    && (storiesList[index].leadMedia?.image?.uri != nil
-                    || storiesList[index].sponsorContent) {
+                if storiesList[index].components?.last?.kicker?.vertical?.name == category {
                     stories.append(
-                        Storie(id: storiesList[index].id,
-                               uri: storiesList[index].uri,
-                               buttonLabel: storiesList[index].buttonLabel,
-                               sponsorContent: storiesList[index].sponsorContent,
-                               sponsorContentLabel: storiesList[index].sponsorContentLabel,
-                               leadMedia: storiesList[index].leadMedia,
-                               promoImage: storiesList[index].promoImage,
-                               components: storiesList[index].components)
+                        storiesList[index]
                     )
                 }
             }
