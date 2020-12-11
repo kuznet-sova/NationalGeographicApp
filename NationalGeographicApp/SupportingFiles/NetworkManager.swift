@@ -62,7 +62,7 @@ class NetworkManager {
         }.resume()
     }
     
-    func getStorieImage(with uri: String?, sponsorContent: Bool, with complition: @escaping (UIImage) -> Void) {
+    func getStoryImage(with uri: String?, sponsorContent: Bool, with complition: @escaping (UIImage) -> Void) {
         let imageUrl = uri
         guard let stringUrl = imageUrl else { return }
 

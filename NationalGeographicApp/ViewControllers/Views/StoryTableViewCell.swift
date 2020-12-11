@@ -1,5 +1,5 @@
 //
-//  StorieTableViewCell.swift
+//  StoryTableViewCell.swift
 //  NationalGeographicApp
 //
 //  Created by Ирина Кузнецова on 12.10.2020.
@@ -8,21 +8,21 @@
 
 import UIKit
 
-class StorieTableViewCell: UITableViewCell {
+class StoryTableViewCell: UITableViewCell {
 
     @IBOutlet var titleTextLabel: UILabel!
     @IBOutlet var subtitleTextLabel: UILabel!
-    @IBOutlet var storieImageView: UIImageView!
+    @IBOutlet var storyImageView: UIImageView!
     
     var spinnerView: UIActivityIndicatorView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        spinnerView = NetworkManager.shared.showSpinner(in: storieImageView)
+        spinnerView = NetworkManager.shared.showSpinner(in: storyImageView)
     }
     
     override func prepareForReuse() {
-        storieImageView.image = nil
+        storyImageView.image = nil
         spinnerView?.stopAnimating()
     }
     

@@ -45,48 +45,35 @@ class StoriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let storie = stories[indexPath.row]
-        let sponsor = storie.sponsorContent
-        var imageUrl: String?
-        
-        if storie.leadMedia?.image?.uri != nil {
-            imageUrl = storie.leadMedia?.image?.uri
-        } else if storie.leadMedia?.video?.image?.uri != nil {
-            imageUrl = storie.leadMedia?.video?.image?.uri
-        } else if storie.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri != nil {
-            imageUrl = storie.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri
-        } else if storie.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri != nil {
-            imageUrl = storie.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri
-        } else if storie.promoImage?.image?.uri != nil {
-            imageUrl = storie.promoImage?.image?.uri
-        }
+        let story = stories[indexPath.row]
+        let sponsor = story.sponsorContent
 
         if sponsor {
             let cell = tableView.dequeueReusableCell(withIdentifier: "sponsorCell", for: indexPath) as! SponsorTableViewCell
-            NetworkManager.shared.getStorieImage(with: imageUrl, sponsorContent: storie.sponsorContent) {
+            NetworkManager.shared.getStoryImage(with: checkImageUrl(story: story), sponsorContent: story.sponsorContent) {
                 image in
                 DispatchQueue.main.async {
                     cell.backgroundColor = UIColor(patternImage: image)
                 }
             }
-            cell.titleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
-            cell.subtitleTextLabel.text = storie.components?[1].dek?.text ?? ""
+            cell.titleTextLabel.text = story.components?.first?.title?.text ?? "📰"
+            cell.subtitleTextLabel.text = story.components?[1].dek?.text ?? ""
             cell.titleTextLabel.textColor = .white
             cell.subtitleTextLabel.textColor = .white
             
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "storieCell", for: indexPath) as! StorieTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "storyCell", for: indexPath) as! StoryTableViewCell
             cell.spinnerView?.startAnimating()
             
-            NetworkManager.shared.getStorieImage(with: imageUrl, sponsorContent: storie.sponsorContent) {
+            NetworkManager.shared.getStoryImage(with: checkImageUrl(story: story), sponsorContent: story.sponsorContent) {
                 image in
                 cell.spinnerView?.stopAnimating()
-                cell.storieImageView.image = image
-                cell.storieImageView.contentMode = UIView.ContentMode.scaleAspectFill
+                cell.storyImageView.image = image
+                cell.storyImageView.contentMode = UIView.ContentMode.scaleAspectFill
             }
-            cell.titleTextLabel.text = storie.components?.last?.kicker?.vertical?.name ?? ""
-            cell.subtitleTextLabel.text = storie.components?.first?.title?.text ?? "📰"
+            cell.titleTextLabel.text = story.components?.last?.kicker?.vertical?.name ?? ""
+            cell.subtitleTextLabel.text = story.components?.first?.title?.text ?? "📰"
             
             return cell
         }
@@ -114,17 +101,35 @@ class StoriesTableViewController: UITableViewController {
             filteringPickerViewController.delegateCategory = self
         } else {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let storie = stories[indexPath.row]
-            let sponsor = storie.sponsorContent
-            let fullStorieViewController = segue.destination as! FullStorieViewController
+            let story = stories[indexPath.row]
+            let sponsor = story.sponsorContent
+            let fullStoryViewController = segue.destination as! FullStoryViewController
             
-            fullStorieViewController.storieUrl = storie.uri
+            fullStoryViewController.storyUrl = story.uri
             if sponsor {
-                fullStorieViewController.storieCategory = storie.sponsorContentLabel
+                fullStoryViewController.storyCategory = story.sponsorContentLabel
             } else {
-                fullStorieViewController.storieCategory = storie.components?.last?.kicker?.vertical?.name
+                fullStoryViewController.storyCategory = story.components?.last?.kicker?.vertical?.name
             }
         }
+    }
+    
+    private func checkImageUrl(story: Story) -> String? {
+        var imageUrl: String?
+        
+        if story.leadMedia?.image?.uri != nil {
+            imageUrl = story.leadMedia?.image?.uri
+        } else if story.leadMedia?.video?.image?.uri != nil {
+            imageUrl = story.leadMedia?.video?.image?.uri
+        } else if story.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri != nil {
+            imageUrl = story.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri
+        } else if story.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri != nil {
+            imageUrl = story.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri
+        } else if story.promoImage?.image?.uri != nil {
+            imageUrl = story.promoImage?.image?.uri
+        }
+        
+        return imageUrl
     }
     
     @objc private func refresh(sender: UIRefreshControl) {
@@ -151,15 +156,6 @@ extension StoriesTableViewController: ChoosenCategoryDelegate {
             
             NetworkManager.shared.fetchData(offsetValue: offsetValue, maxValue: maxValue, category: category) { stories in
                 DispatchQueue.main.async {
-                    
-//                    if stories.isEmpty {
-//                        self.offsetValue += self.maxValue
-//                        self.maxValue = 8
-//                    } else {
-//                        self.offsetValue = 0
-//                        self.maxValue = 18
-//                    }
-                    
                     self.stories = stories
                     self.tableView.reloadData()
                 }

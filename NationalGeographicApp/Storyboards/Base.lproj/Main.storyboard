@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ARk-Ph-IDc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ARk-Ph-IDc">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -75,7 +75,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="storieCell" rowHeight="140" id="REq-lj-Uhj" customClass="StorieTableViewCell" customModule="NationalGeographicApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="storyCell" rowHeight="140" id="REq-lj-Uhj" customClass="StoryTableViewCell" customModule="NationalGeographicApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="REq-lj-Uhj" id="GCI-DQ-cEg">
@@ -118,7 +118,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="storieImageView" destination="kDu-rr-xzI" id="8sO-0g-3Kd"/>
+                                    <outlet property="storyImageView" destination="kDu-rr-xzI" id="TGO-mZ-Jah"/>
                                     <outlet property="subtitleTextLabel" destination="3Eh-TT-eLY" id="uYk-ha-DSs"/>
                                     <outlet property="titleTextLabel" destination="el1-g0-Ibf" id="LhH-1F-b0s"/>
                                     <segue destination="G8X-u2-u69" kind="show" identifier="cell" id="gu5-De-IOY"/>
@@ -245,10 +245,10 @@
             </objects>
             <point key="canvasLocation" x="2544.8000000000002" y="-600.44977511244383"/>
         </scene>
-        <!--Full Storie View Controller-->
+        <!--Full Story View Controller-->
         <scene sceneID="bhm-5g-duh">
             <objects>
-                <viewController id="G8X-u2-u69" customClass="FullStorieViewController" customModule="NationalGeographicApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="G8X-u2-u69" customClass="FullStoryViewController" customModule="NationalGeographicApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jic-Ne-9KD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,7 +273,7 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="Bgb-b8-5Wj"/>
                     <connections>
-                        <outlet property="fullStorieWebView" destination="ZWe-S2-BV5" id="BM3-Jn-zjz"/>
+                        <outlet property="fullStoryWebView" destination="ZWe-S2-BV5" id="wAG-Or-bRg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="36I-bM-ldQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -300,7 +300,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7Rj-ek-GFD"/>
+        <segue reference="gu5-De-IOY"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="line.horizontal.3.decrease" catalog="system" width="128" height="73"/>
