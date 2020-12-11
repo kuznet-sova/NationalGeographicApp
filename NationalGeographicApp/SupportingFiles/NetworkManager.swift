@@ -14,7 +14,7 @@ class NetworkManager {
     var cashedImages: [String: UIImage] = [:]
     var dispatchQueue = DispatchQueue.global()
     
-    func fetchData(offsetValue: Int, maxValue: Int, category: String, with complition: @escaping ([Storie]) -> Void) {
+    func fetchData(offsetValue: Int, maxValue: Int, category: String, with complition: @escaping ([Story]) -> Void) {
         let latestStoriesUrl = "https://www.nationalgeographic.com/latest-stories/_jcr_content/content/hubfeed.promo-hub-feed-all-stories.json?offset=\(offsetValue)&max=\(maxValue)"
         
         guard let url = URL(string: latestStoriesUrl) else { return }
@@ -26,7 +26,7 @@ class NetworkManager {
             let decoder = JSONDecoder()
 
             do {
-                let storiesList = try decoder.decode([Storie].self, from: data)
+                let storiesList = try decoder.decode([Story].self, from: data)
                 
                 if category == "Partner Content" {
                     complition(self.getData(storiesList: storiesList, category: nil))
@@ -115,8 +115,8 @@ class NetworkManager {
         return activityIndicator
     }
     
-    private func getData(storiesList: [Storie], category: String?) -> [Storie] {
-        var stories = [Storie]()
+    private func getData(storiesList: [Story], category: String?) -> [Story] {
+        var stories = [Story]()
         
         for index in 0 ..< storiesList.count {
             

@@ -40,8 +40,8 @@ extension FilteringPickerViewController: UIPickerViewDataSource {
 
 extension FilteringPickerViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let catigorie = categories[row]
-        choosenCategory = catigorie.nameCategory
+        let catigory = categories[row]
+        choosenCategory = catigory.nameCategory
         return choosenCategory
     }
     

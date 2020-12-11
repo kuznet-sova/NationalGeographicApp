@@ -17,7 +17,7 @@ class StoriesTableViewController: UITableViewController {
     
     private var offsetValue = 0
     private var maxValue = 18
-    var stories: [Storie] = []
+    var stories: [Story] = []
     var category = "All"
     
     let refresh: UIRefreshControl = {

@@ -1,12 +1,12 @@
 //
-//  Storie.swift
+//  Story.swift
 //  NationalGeographicApp
 //
 //  Created by Ирина Кузнецова on 09.10.2020.
 //  Copyright © 2020 Irina Kuznetsova. All rights reserved.
 //
 
-struct Storie: Decodable {
+struct Story: Decodable {
     let id: String
     let uri: String?
     let buttonLabel: String
@@ -17,7 +17,8 @@ struct Storie: Decodable {
     let components: [Component]?
     
     enum CodingKeys: String, CodingKey {
-        case id, uri
+        case id
+        case uri
         case buttonLabel = "button_label"
         case sponsorContent = "sponsor_content"
         case sponsorContentLabel = "sponsor_content_label"
@@ -33,7 +34,8 @@ struct LeadMedia: Decodable {
     let immersiveLead: ImmersiveLead?
     
     enum CodingKeys: String, CodingKey {
-        case image, video
+        case image
+        case video
         case immersiveLead = "immersive_lead"
     }
 }
