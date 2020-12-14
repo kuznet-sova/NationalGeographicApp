@@ -108,22 +108,19 @@ class NetworkManager {
         var stories = [Story]()
         
         for index in 0 ..< storiesList.count {
+            let stroy = storiesList[index]
+            var chosenCategory: String? = "All"
             
-            if category == "All"
-                && storiesList[index].buttonLabel.contains("Read")
-                && (storiesList[index].leadMedia?.image?.uri != nil
-                        || storiesList[index].sponsorContent) {
-                stories.append(
-                    storiesList[index]
-                )
-            } else {
-                if storiesList[index].components?.last?.kicker?.vertical?.name == category {
-                    stories.append(
-                        storiesList[index]
-                    )
-                }
+            if category != "All" {
+                chosenCategory = stroy.components?.last?.kicker?.vertical?.name
             }
-            
+
+            if stroy.buttonLabel.contains("Read")
+                && category == chosenCategory
+                && (stroy.leadMedia?.image?.uri != nil
+                        || stroy.sponsorContent) {
+                stories.append( stroy )
+            }
         }
         
         return stories
