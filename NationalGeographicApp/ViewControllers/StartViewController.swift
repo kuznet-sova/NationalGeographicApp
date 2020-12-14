@@ -32,18 +32,21 @@ class StartViewController: UIViewController {
                 self.photoUri = photoInfo.items.first?.image?.uri
                 self.photoCaption = photoInfo.items.first?.image?.caption
                 self.photoOfTheDayLabel.text = "\(self.photoCaption ?? "Photo of the day:")"
-                
-                NetworkManager.shared.getPhoto(with: self.photoUri) {
-                    photo in
-                    DispatchQueue.main.async {
-                        self.spinnerView?.stopAnimating()
-                        self.photoOfTheDayImageView.image = photo
-                        self.photoOfTheDayImageView.contentMode = UIView.ContentMode.scaleAspectFill
-                    }
-                }
+                self.getPhotoForData()
             }
         }
         
+    }
+    
+    private func getPhotoForData() {
+        NetworkManager.shared.getPhoto(with: self.photoUri) {
+            photo in
+            DispatchQueue.main.async {
+                self.spinnerView?.stopAnimating()
+                self.photoOfTheDayImageView.image = photo
+                self.photoOfTheDayImageView.contentMode = UIView.ContentMode.scaleAspectFill
+            }
+        }
     }
 
 }
