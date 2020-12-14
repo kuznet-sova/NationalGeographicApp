@@ -18,7 +18,7 @@ class StoryTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        spinnerView = NetworkManager.shared.showSpinner(in: storyImageView)
+        spinnerView = LoaderAnimation.shared.showSpinner(in: storyImageView)
     }
     
     override func prepareForReuse() {

@@ -104,17 +104,6 @@ class NetworkManager {
         }
     }
     
-    func showSpinner(in view: UIView) -> UIActivityIndicatorView {
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.color = .gray
-        activityIndicator.center = view.center
-        activityIndicator.hidesWhenStopped = true
-
-        view.addSubview(activityIndicator)
-
-        return activityIndicator
-    }
-    
     private func getData(storiesList: [Story], category: String?) -> [Story] {
         var stories = [Story]()
         

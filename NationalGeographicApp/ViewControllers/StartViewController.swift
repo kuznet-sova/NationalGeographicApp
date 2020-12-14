@@ -18,7 +18,7 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        spinnerView = NetworkManager.shared.showSpinner(in: view)
+        spinnerView = LoaderAnimation.shared.showSpinner(in: view)
         
         NetworkManager.shared.getDefaultImage(imageName: "NatGeoLogo.png") {
             defaultImage in
