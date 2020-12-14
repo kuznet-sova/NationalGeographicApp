@@ -116,22 +116,20 @@ class StoriesTableViewController: UITableViewController {
     
     private func checkImageUrl(story: Story) -> String? {
         var imageUrl: String?
-        
-        let leadMediaImage = story.leadMedia?.image?.uri
-        let leadMediaVideoImage = story.leadMedia?.video?.image?.uri
-        let immersiveLeadImage = story.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri
-        let immersiveLeadVideoImage = story.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri
-        let promoImage = story.promoImage?.image?.uri
-        
-        if leadMediaImage != nil {
+
+        if let leadMediaImage = story.leadMedia?.image?.uri {
             imageUrl = leadMediaImage
-        } else if leadMediaVideoImage != nil {
+        }
+        if let leadMediaVideoImage = story.leadMedia?.video?.image?.uri {
             imageUrl = leadMediaVideoImage
-        } else if immersiveLeadImage != nil {
+        }
+        if let immersiveLeadImage = story.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri {
             imageUrl = immersiveLeadImage
-        } else if immersiveLeadVideoImage != nil {
+        }
+        if let immersiveLeadVideoImage = story.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri {
             imageUrl = immersiveLeadVideoImage
-        } else if promoImage != nil {
+        }
+        if let promoImage = story.promoImage?.image?.uri {
             imageUrl = promoImage
         }
         
