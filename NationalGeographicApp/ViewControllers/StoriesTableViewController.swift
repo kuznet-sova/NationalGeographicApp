@@ -117,16 +117,22 @@ class StoriesTableViewController: UITableViewController {
     private func checkImageUrl(story: Story) -> String? {
         var imageUrl: String?
         
-        if story.leadMedia?.image?.uri != nil {
-            imageUrl = story.leadMedia?.image?.uri
-        } else if story.leadMedia?.video?.image?.uri != nil {
-            imageUrl = story.leadMedia?.video?.image?.uri
-        } else if story.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri != nil {
-            imageUrl = story.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri
-        } else if story.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri != nil {
-            imageUrl = story.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri
-        } else if story.promoImage?.image?.uri != nil {
-            imageUrl = story.promoImage?.image?.uri
+        let leadMediaImage = story.leadMedia?.image?.uri
+        let leadMediaVideoImage = story.leadMedia?.video?.image?.uri
+        let immersiveLeadImage = story.leadMedia?.immersiveLead?.immersiveLeadMedia?.image?.uri
+        let immersiveLeadVideoImage = story.leadMedia?.immersiveLead?.immersiveLeadMedia?.video?.image?.uri
+        let promoImage = story.promoImage?.image?.uri
+        
+        if leadMediaImage != nil {
+            imageUrl = leadMediaImage
+        } else if leadMediaVideoImage != nil {
+            imageUrl = leadMediaVideoImage
+        } else if immersiveLeadImage != nil {
+            imageUrl = immersiveLeadImage
+        } else if immersiveLeadVideoImage != nil {
+            imageUrl = immersiveLeadVideoImage
+        } else if promoImage != nil {
+            imageUrl = promoImage
         }
         
         return imageUrl
